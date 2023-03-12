@@ -16,7 +16,7 @@ class Connection():
         
     def connection(self, settings=None):
         try:
-            db_text = models.get_settings(settings) if settings else models.get_settings()
+            db_text = models.get_settings(settings)
             db_text.connection()
             print("DataBase connected successfully!")
             result = {"status": 1, "message": "Conexión exitosa!"}
@@ -37,7 +37,7 @@ class Connection():
                 models.Planes.insert_many(self.planes_data).execute()
                 models.Descuentos.insert_many(self.descuentos_data).execute()
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), 'Creacion de tablas, inicio App')
             log.registrar_error()
         try:
             with self.db.atomic():
@@ -51,14 +51,15 @@ class Connection():
                         lname= socio['lname'], 
                         email= socio['email'], 
                         plan_id=plan.id, 
-                        discount_id=descuento.id if descuento else None
+                        discount_id=descuento.id if descuento else None,
+                        applications_left = socio["applications_left"]
                     )
                     socio_.save()
                     if descuento:
                         models.Application_left.insert(socio_id=socio_.id, applications=descuento.applications).execute()
             print("Tables created and initial data inserted")
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Creacion de socios, inicio App")
             log.registrar_error()
         finally:
             self.db.close()
@@ -93,7 +94,7 @@ class CrudDB(Connection):
             print("Socio creado con exito!")
             result = {"status": 1, "message": "Socio creado con exito!"}
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Create Socio")
             log.registrar_error()
             result = {"status": 0, "message": f"ERROR create: {e}"}
         
@@ -110,7 +111,7 @@ class CrudDB(Connection):
             print("Socio actualizado con exito!")
             result = 1
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Update Socio")
             log.registrar_error()
             result = 0
         
@@ -125,7 +126,7 @@ class CrudDB(Connection):
             print("Socio eliminado con exito!")
             result = 1
         except Exception as e: 
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Delete Socio")
             log.registrar_error()
             result = 0
         
@@ -139,7 +140,7 @@ class CrudDB(Connection):
             self.db.connect()
             socios = select_all(models.Socio)
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Get all Socio")
             log.registrar_error()
             socios = []
         
@@ -153,7 +154,7 @@ class CrudDB(Connection):
             self.db.connect()
             socio = get_data(models.Socio, models.Socio.email == email)
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Get one Socio")
             log.registrar_error()
             socio = {}
         
@@ -169,7 +170,7 @@ class CrudDB(Connection):
             print(f"Socio {email} no esta mas activo")
             result = 1
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Ban Socio")
             log.registrar_error()
             result = 0
         
@@ -185,7 +186,7 @@ class CrudDB(Connection):
             print(f"Socio {email} activado")
             result = 1
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Activate Socio")
             log.registrar_error()
             result = 0
         
@@ -208,7 +209,7 @@ class CrudDB(Connection):
                 socio.save()
                 result = 1
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Discount socio applications Socio")
             log.registrar_error()
             result = 0
         
@@ -248,7 +249,7 @@ class DiscountCrud(Connection):
             self.db.connect(reuse_if_open=True)
             descuentos = select_all(models.Descuentos)
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Get all Descuentos")
             log.registrar_error()
             descuentos = []
         
@@ -261,7 +262,7 @@ class DiscountCrud(Connection):
             self.db.connect(reuse_if_open=True)
             descuento = get_data(models.Descuentos, models.Descuentos.id == id)
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Get one Descuentos")
             log.registrar_error()
             descuento = {}
         
@@ -280,7 +281,7 @@ class PlanesCrud(Connection):
             self.db.connect(reuse_if_open=True)
             planes = select_all(models.Planes)
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Get all Planes")
             log.registrar_error()
             planes = []
         
@@ -293,7 +294,7 @@ class PlanesCrud(Connection):
             self.db.connect(reuse_if_open=True)
             plan = get_data(models.Planes, models.Planes.id == id)
         except Exception as e:
-            log = RegistroLogError(e, datetime.now())
+            log = RegistroLogError(e, datetime.now(), "Get one Descuentos")
             log.registrar_error()
             plan = {}
         

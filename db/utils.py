@@ -14,12 +14,13 @@ class RegistroLogError(Exception):
     BASE_DIR = os.path.dirname((os.path.abspath(Path(__file__).parent)))
     ruta = os.path.join(BASE_DIR, 'errorLog.txt')
     
-    def __init__(self, error, fecha, *args: object) -> None:
+    def __init__(self, error, fecha, proceso, *args: object) -> None:
         self.error = error
         self.fecha = fecha
+        self.proceso = proceso
         
     def registrar_error(self):
         log = open(self.ruta, 'a')
-        log.write(f'{self.fecha} -- error: {self.error}\n')
+        log.write(f'{self.fecha} -- info: {self.proceso} -- error: {self.error}\n')
         log.close()
         

@@ -20,37 +20,60 @@ class NewDBConfWindow(QWidget, NewDBConfForm):
         self.sendDBConfBtn.clicked.connect(self.save_data)
         # captura el cambio del combobox
         self.dbComboBox.currentTextChanged.connect(self.hide_fields)
-        self.hostLineEdit.hide()
-        self.userLineEdit.hide()
-        self.passLineEdit.hide()
+        self.hide_labels()
         
         
-    # TODO: falta escondaer los labels con las palabras
     def hide_fields(self):
+        self.erase_errors_labels()
+        self.testResultDBLabel.setText('')
         if self.dbComboBox.currentText() == "SQLite":
-            self.hostLineEdit.hide()
-            self.userLineEdit.hide()
-            self.passLineEdit.hide()
+            self.hide_labels()
         else:
             self.hostLineEdit.show()
             self.userLineEdit.show()
             self.passLineEdit.show()
-        
+            self.labelHost.show()
+            self.labelUser.show()
+            self.labelPass.show()
+    
+    
+    def hide_labels(self):
+        self.hostLineEdit.hide()
+        self.userLineEdit.hide()
+        self.passLineEdit.hide()
+        self.labelHost.hide()
+        self.labelUser.hide()
+        self.labelPass.hide()
+    
         
     def check_input(self):
-        type = self.dbComboBox.currentText()
+        self.erase_errors_labels()
+        db_type = self.dbComboBox.currentText()
         host = self.hostLineEdit.text()
         database = self.databaseLineEdit.text()
         user = self.userLineEdit.text()
         password = self.passLineEdit.text()
-        errors_count = 0
-        
+        errors_dict = {
+            "count": 0,
+        }
+        # hostErrorLabel, dbErrorLabel, userErrorLabel
         if database == "":
-            errors_count += 1
+            errors_dict["count"] += 1
+            errors_dict["database"] = "Este campo es obligatorio"
         
-        if errors_count == 0:
+        if db_type == "MySQL":
+            if host == "":
+                errors_dict["count"] += 1
+                errors_dict["host"] = "Este campo es obligatorio"
+                
+            if user == "":
+                errors_dict["count"] += 1
+                errors_dict["user"] = "Este campo es obligatorio"
+
+        
+        if errors_dict["count"] == 0:
             self.new_settings = {
-                "type"      : type,
+                "type"      : db_type,
                 "name"      : database,
                 "host"      : host,
                 "user"      : user,
@@ -58,8 +81,24 @@ class NewDBConfWindow(QWidget, NewDBConfForm):
             }
             return True
         else:
+            self.write_erros_labels(errors_dict)
             return False
          
+
+    def write_erros_labels(self, data):
+        if data.get('database'):
+            self.dbErrorLabel.setText(data['database'])
+        if data.get('host'):
+            self.hostErrorLabel.setText(data['host'])
+        if data.get('user'):
+            self.userErrorLabel.setText(data['user'])
+    
+    
+    def erase_errors_labels(self):
+        self.dbErrorLabel.setText("")
+        self.hostErrorLabel.setText("")
+        self.userErrorLabel.setText("")
+    
          
     def clear_inputs(self):
         self.hostLineEdit.clear()
@@ -82,19 +121,25 @@ class NewDBConfWindow(QWidget, NewDBConfForm):
     def backup_socios(data):
         with open('db/socios.json', "w") as file:
             json.dump(data, file, default=str, indent=1)
-         
-        
+          
     
     def check_conn(self):
         self.testResultDBLabel.setText(" ")
         if self.check_input():
-            conn = Connection().connection(self.new_settings)
-            if conn["status"]:
-                self.testResultDBLabel.setText(conn["message"])
+            conn = Connection()
+            result = conn.connection(self.new_settings)
+            if result["status"]:
+                self.testResultDBLabel.setText(result["message"])
+                self.testResultDBLabelError.setText(" ")
             else:
-                self.testResultDBLabel.setText(conn["message"])
+                self.testResultDBLabelError.setText(result["message"])
+                self.testResultDBLabel.setText(" ")
         else:
-            self.testResultDBLabel.setText("Faltan datos")
+            self.testResultDBLabelError.setText("Faltan datos")
+            self.testResultDBLabel.setText(" ")
+            
+        if os.path.isfile(self.new_settings["name"]):
+            os.remove(self.new_settings["name"])
         
     
     def save_data(self):

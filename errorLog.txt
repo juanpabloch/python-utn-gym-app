@@ -1,19 +1,1 @@
 
-2023-03-11 21:33:26.684643 -- error: UNIQUE constraint failed: planes.plan_name
-2023-03-11 21:33:26.688643 -- error: UNIQUE constraint failed: socio.email
-2023-03-11 21:36:04.343058 -- error: UNIQUE constraint failed: planes.plan_name
-2023-03-11 21:36:04.343058 -- error: UNIQUE constraint failed: socio.email
-2023-03-11 21:36:32.002178 -- error: UNIQUE constraint failed: planes.plan_name
-2023-03-11 21:36:32.007147 -- error: UNIQUE constraint failed: socio.email
-2023-03-11 21:38:41.872213 -- error: UNIQUE constraint failed: planes.plan_name
-2023-03-11 21:38:41.872213 -- error: UNIQUE constraint failed: socio.email
-2023-03-11 21:41:19.174566 -- error: UNIQUE constraint failed: planes.plan_name
-2023-03-11 21:41:19.174566 -- error: UNIQUE constraint failed: socio.email
-2023-03-11 21:48:44.110243 -- error: UNIQUE constraint failed: planes.plan_name
-2023-03-11 21:48:44.114243 -- error: UNIQUE constraint failed: socio.email
-2023-03-11 21:49:29.378763 -- error: UNIQUE constraint failed: planes.plan_name
-2023-03-11 21:49:29.388764 -- error: UNIQUE constraint failed: socio.email
-2023-03-11 21:50:39.045473 -- error: UNIQUE constraint failed: planes.plan_name
-2023-03-11 21:50:39.055516 -- error: UNIQUE constraint failed: socio.email
-2023-03-11 21:51:49.856807 -- error: UNIQUE constraint failed: planes.plan_name
-2023-03-11 21:51:49.866808 -- error: UNIQUE constraint failed: socio.email

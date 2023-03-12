@@ -57,7 +57,7 @@ class NewDBConfForm(object):
         self.dbComboBox.setFont(font)
         self.sendDBConfBtn = QPushButton(NewDBConfForm)
         self.sendDBConfBtn.setObjectName(u"sendDBConfBtn")
-        self.sendDBConfBtn.setGeometry(QRect(510, 460, 151, 41))
+        self.sendDBConfBtn.setGeometry(QRect(510, 460, 161, 41))
         font1 = QFont()
         font1.setBold(True)
         font1.setWeight(75)
@@ -102,14 +102,21 @@ class NewDBConfForm(object):
         self.labelPass = QLabel(NewDBConfForm)
         self.labelPass.setObjectName(u"labelPass")
         self.labelPass.setGeometry(QRect(60, 380, 101, 31))
-        self.testResultDBLabel = QLabel(NewDBConfForm)
-        self.testResultDBLabel.setObjectName(u"testResultDBLabel")
-        self.testResultDBLabel.setGeometry(QRect(500, 290, 341, 31))
+        self.testResultDBLabelError = QLabel(NewDBConfForm)
+        self.testResultDBLabelError.setObjectName(u"testResultDBLabelError")
+        self.testResultDBLabelError.setGeometry(QRect(510, 290, 321, 81))
         font2 = QFont()
         font2.setFamily(u"Verdana")
-        font2.setPointSize(12)
-        self.testResultDBLabel.setFont(font2)
-        self.testResultDBLabel.setStyleSheet(u"")
+        font2.setBold(True)
+        font2.setWeight(62)
+        self.testResultDBLabelError.setFont(font2)
+        self.testResultDBLabelError.setStyleSheet(u"#testResultDBLabelError{\n"
+"color: rgb(199, 0, 0);\n"
+"font-size:18px; \n"
+"letter-spacing: 2px;\n"
+"font-weight: 500;\n"
+"}")
+        self.testResultDBLabelError.setWordWrap(True)
         self.testDBConfBtn = QPushButton(NewDBConfForm)
         self.testDBConfBtn.setObjectName(u"testDBConfBtn")
         self.testDBConfBtn.setGeometry(QRect(510, 230, 321, 41))
@@ -129,6 +136,38 @@ class NewDBConfForm(object):
 "	color: rgb(17, 17, 17);\n"
 "	border:1px solid rgb(225, 225, 225);\n"
 "}")
+        self.hostErrorLabel = QLabel(NewDBConfForm)
+        self.hostErrorLabel.setObjectName(u"hostErrorLabel")
+        self.hostErrorLabel.setGeometry(QRect(240, 130, 171, 20))
+        self.hostErrorLabel.setLayoutDirection(Qt.RightToLeft)
+        self.hostErrorLabel.setStyleSheet(u"color: rgb(199, 0, 0);\n"
+"text-align: right;")
+        self.hostErrorLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.dbErrorLabel = QLabel(NewDBConfForm)
+        self.dbErrorLabel.setObjectName(u"dbErrorLabel")
+        self.dbErrorLabel.setGeometry(QRect(240, 220, 171, 20))
+        self.dbErrorLabel.setLayoutDirection(Qt.RightToLeft)
+        self.dbErrorLabel.setStyleSheet(u"color: rgb(199, 0, 0);\n"
+"text-align: right;")
+        self.dbErrorLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.userErrorLabel = QLabel(NewDBConfForm)
+        self.userErrorLabel.setObjectName(u"userErrorLabel")
+        self.userErrorLabel.setGeometry(QRect(240, 310, 171, 20))
+        self.userErrorLabel.setLayoutDirection(Qt.RightToLeft)
+        self.userErrorLabel.setStyleSheet(u"color: rgb(199, 0, 0);\n"
+"text-align: right;")
+        self.userErrorLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.testResultDBLabel = QLabel(NewDBConfForm)
+        self.testResultDBLabel.setObjectName(u"testResultDBLabel")
+        self.testResultDBLabel.setGeometry(QRect(510, 410, 351, 31))
+        font3 = QFont()
+        font3.setFamily(u"Verdana")
+        font3.setPointSize(11)
+        self.testResultDBLabel.setFont(font3)
+        self.testResultDBLabel.setStyleSheet(u"#testResultDBLabel{\n"
+"	color: rgb(99, 199, 147);\n"
+"}")
+        self.testResultDBLabel.setAlignment(Qt.AlignCenter)
 
         self.retranslateUi(NewDBConfForm)
 
@@ -142,10 +181,23 @@ class NewDBConfForm(object):
         self.labelDB.setText(QCoreApplication.translate("NewDBConfForm", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Database: </span></p></body></html>", None))
         self.labelUser.setText(QCoreApplication.translate("NewDBConfForm", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">User: </span></p></body></html>", None))
         self.label_5.setText(QCoreApplication.translate("NewDBConfForm", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Seleccionar DB: </span></p></body></html>", None))
-        self.sendDBConfBtn.setText(QCoreApplication.translate("NewDBConfForm", u"Agregar", None))
+        self.sendDBConfBtn.setText(QCoreApplication.translate("NewDBConfForm", u"Cambiar DB", None))
         self.cancelNewDBBtn.setText(QCoreApplication.translate("NewDBConfForm", u"Cancelar", None))
         self.labelPass.setText(QCoreApplication.translate("NewDBConfForm", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Password: </span></p></body></html>", None))
-        self.testResultDBLabel.setText("")
+        self.testResultDBLabelError.setText("")
         self.testDBConfBtn.setText(QCoreApplication.translate("NewDBConfForm", u"Testear conexi\u00f3n", None))
+#if QT_CONFIG(tooltip)
+        self.hostErrorLabel.setToolTip(QCoreApplication.translate("NewDBConfForm", u"<html><head/><body><p align=\"right\"><br/></p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.hostErrorLabel.setText("")
+#if QT_CONFIG(tooltip)
+        self.dbErrorLabel.setToolTip(QCoreApplication.translate("NewDBConfForm", u"<html><head/><body><p align=\"right\"><br/></p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.dbErrorLabel.setText("")
+#if QT_CONFIG(tooltip)
+        self.userErrorLabel.setToolTip(QCoreApplication.translate("NewDBConfForm", u"<html><head/><body><p align=\"right\"><br/></p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.userErrorLabel.setText("")
+        self.testResultDBLabel.setText(QCoreApplication.translate("NewDBConfForm", u"<html><head/><body><p><br/></p></body></html>", None))
     # retranslateUi
 
