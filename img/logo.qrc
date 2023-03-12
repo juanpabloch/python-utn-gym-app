@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="logo">
+    <file>gym_logo2.png</file>
+  </qresource>
+</RCC>

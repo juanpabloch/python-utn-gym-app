@@ -1,3 +1,7 @@
+"""
+Archivo donde tenemos la coneccion a la base de datos y el crud de cada modelo
+
+"""
 from db import models
 from db.seed import populate_tables_dict
 from db.utils import get_data, select_all
@@ -6,7 +10,13 @@ import json
 from datetime import datetime
 from db.utils import RegistroLogError
 
+import os
+from pathlib import Path
+
+this_directory = os.path.dirname(Path(__file__).parent)
+
 class Connection():
+    """Clase que se utiliza para conectarse con la base de datos"""
     db = models.get_settings()
     def __init__(self) -> None:
         self.planes_data = populate_tables_dict()["planes"]
@@ -15,6 +25,7 @@ class Connection():
         
         
     def connection(self, settings=None):
+        """realiza un testeo de la coneccion"""
         try:
             db_text = models.get_settings(settings)
             db_text.connection()
@@ -30,6 +41,7 @@ class Connection():
         
     
     def create_and_populate_tables(self):
+        """funcion para ingresar datos iniciales de la app"""
         try:
             self.db.connect()
             self.db.create_tables([models.Planes, models.Descuentos, models.Socio, models.Application_left])
@@ -63,7 +75,7 @@ class Connection():
             log.registrar_error()
         finally:
             self.db.close()
-            with open('db/socios.json', "w") as file:
+            with open(os.path.join(this_directory, 'socios.conf'), "w") as file:
                 json.dump([], file, default=str, indent=1)
         
         
@@ -103,7 +115,7 @@ class CrudDB(Connection):
 
 
     def update(self, data, email):
-        """ funcion para actualizar un socio """
+        """ funcion para actualizar un socio data = {name, lname, plan} """
         try:
             self.db.connect()
             plan = get_data(models.Planes, models.Planes.plan_name == data['plan'])

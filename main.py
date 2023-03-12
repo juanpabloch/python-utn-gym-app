@@ -1,3 +1,7 @@
+"""
+Archivo donde se ejecuta la app
+"""
+
 from PySide2.QtWidgets import QApplication
 from controller.main_window import SocioWindow
 from db.db import Connection

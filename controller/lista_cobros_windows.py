@@ -23,7 +23,7 @@ class ListaCobroWindow(QWidget, ListaCobro):
         
 
     def table_config(self):
-        column_headers = ["Nombre", "Email", "Abonar"]
+        column_headers = ["NOMBRE", "EMAIL", "COBRAR"]
         self.tableListaCobro.setColumnCount(len(column_headers)) 
         self.tableListaCobro.setColumnWidth(0, 150)   
         self.tableListaCobro.setColumnWidth(1, 200)   

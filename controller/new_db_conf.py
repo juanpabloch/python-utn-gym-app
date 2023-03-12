@@ -5,7 +5,9 @@ import json
 from db.db import Connection, CrudDB
 import os
 import sys
+from pathlib import Path
 
+this_directory = os.path.dirname(Path(__file__).parent)
 
 class NewDBConfWindow(QWidget, NewDBConfForm):
     new_settings = {}
@@ -113,13 +115,13 @@ class NewDBConfWindow(QWidget, NewDBConfForm):
     
     @staticmethod
     def change_settings(data):
-        with open('db/settings.json', "w") as file:
+        with open(os.path.join(this_directory, 'settings.conf'), "w") as file:
             json.dump(data, file)
     
     
     @staticmethod
     def backup_socios(data):
-        with open('db/socios.json', "w") as file:
+        with open(os.path.join(this_directory, 'socios.conf'), "w") as file:
             json.dump(data, file, default=str, indent=1)
           
     

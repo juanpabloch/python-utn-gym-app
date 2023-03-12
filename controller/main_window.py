@@ -6,7 +6,12 @@ from .lista_cobros_windows import ListaCobroWindow
 from .new_db_conf import NewDBConfWindow
 
 from db.db import CrudDB, PlanesCrud, DiscountCrud
+import webbrowser
 
+import os
+from pathlib import Path
+
+this_directory = os.path.dirname(Path(__file__).parent)
 
 class SocioWindow(QWidget, MainWindows2):
     socio_db = CrudDB()
@@ -38,7 +43,13 @@ class SocioWindow(QWidget, MainWindows2):
         self.updateSocioFrame.hide()
         self.cancelUpdateSocioBtn.clicked.connect(self.close_update)
         self.sendUpdateSocioBtn.clicked.connect(self.update_socio)
+        # documentacion
+        self.docuBtn.clicked.connect(self.open_doc)
         
+    
+    def open_doc(self):
+        webbrowser.open_new_tab('file:///'+ this_directory + '/docs/_build/html/index.html')
+    
         
     def open_lista_cobros(self):
         window = ListaCobroWindow(self)
@@ -55,12 +66,12 @@ class SocioWindow(QWidget, MainWindows2):
     
     
     def table_config(self):
-        column_headers = ["ID", "Nombre", "Apellido", "Email"]    
+        column_headers = ["ID", "NOMBRE", "APELLIDO", "EMAIL"]    
         self.sociosListTable.setColumnCount(len(column_headers))
-        self.sociosListTable.setColumnWidth(0, 60)
-        self.sociosListTable.setColumnWidth(1, 160)
-        self.sociosListTable.setColumnWidth(2, 160)
-        self.sociosListTable.setColumnWidth(3, 210)
+        self.sociosListTable.setColumnWidth(0, 70)
+        self.sociosListTable.setColumnWidth(1, 170)
+        self.sociosListTable.setColumnWidth(2, 170)
+        self.sociosListTable.setColumnWidth(3, 220)
         self.sociosListTable.setHorizontalHeaderLabels(column_headers)
         self.sociosListTable.setSelectionBehavior(QAbstractItemView.SelectRows)
     

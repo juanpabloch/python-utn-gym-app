@@ -13,28 +13,41 @@
   <property name="windowTitle">
    <string>new_socio_window</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:#ffffff;</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>20</y>
-     <width>821</width>
-     <height>41</height>
+     <x>90</x>
+     <y>-10</y>
+     <width>801</width>
+     <height>91</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Sitka Small</family>
+     <pointsize>-1</pointsize>
+     <weight>87</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">font-size:30px; 
-color:#3c2934;
-letter-spacing: 2px;
-text-align: center;
-font-weight: 600;
+    <string notr="true">font-size:55px; 
+color:rgb(227, 227, 227);
+letter-spacing: 0px;
+font-weight: 700;
 </string>
    </property>
    <property name="frameShape">
-    <enum>QFrame::Box</enum>
+    <enum>QFrame::NoFrame</enum>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;CONFIGURAR DB&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>CONFIGURACIÓN DB</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelHost">
@@ -59,6 +72,11 @@ font-weight: 600;
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLabel" name="labelDB">
    <property name="geometry">
@@ -82,6 +100,11 @@ font-weight: 600;
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLabel" name="labelUser">
    <property name="geometry">
@@ -104,6 +127,11 @@ font-weight: 600;
      <width>351</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -132,6 +160,9 @@ font-weight: 600;
     <font>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:1px solid #000;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="sendDBConfBtn">
@@ -216,6 +247,11 @@ font-weight: 600;
      <width>351</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLabel" name="labelPass">

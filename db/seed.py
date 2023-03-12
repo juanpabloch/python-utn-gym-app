@@ -1,6 +1,12 @@
+"""Informacion inicial para app"""
 import json
+import os
 
-with open('db/socios.json') as file:
+from pathlib import Path
+
+this_directory = os.path.dirname(Path(__file__).parent)
+
+with open(os.path.join(this_directory, 'socios.conf')) as file:
     socios = json.load(file)
 
 def populate_tables_dict():

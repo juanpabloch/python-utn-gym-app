@@ -1,10 +1,16 @@
+"""Modelos de la app"""
 from peewee import *
 from datetime import datetime
 import json
+import os
+
+from pathlib import Path
+
+this_directory = os.path.dirname(Path(__file__).parent)
 
 def get_settings(settings=None):
     if not settings:
-        with open('db/settings.json') as file:
+        with open(os.path.join(this_directory, 'settings.conf')) as file:
                 settings = json.load(file)
     
     if settings['type'] == "MySQL":

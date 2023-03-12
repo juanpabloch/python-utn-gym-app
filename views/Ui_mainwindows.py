@@ -27,25 +27,47 @@ class MainWindows2(object):
         self.OptionsFrame.setFrameShadow(QFrame.Raised)
         self.addSocioBtn = QPushButton(self.OptionsFrame)
         self.addSocioBtn.setObjectName(u"addSocioBtn")
-        self.addSocioBtn.setGeometry(QRect(40, 270, 151, 61))
-        self.addSocioBtn.setStyleSheet(u"color:#fff;\n"
+        self.addSocioBtn.setGeometry(QRect(40, 330, 151, 41))
+        self.addSocioBtn.setStyleSheet(u"#addSocioBtn{\n"
+"color:#fff;\n"
 "font-size: 14px;\n"
 "font-weight: 600;\n"
-"letter-spacing: 2px;")
+"letter-spacing: 2px;\n"
+"border:none;\n"
+"background-color:rgb(61, 49, 55);\n"
+"}")
         self.configDB = QPushButton(self.OptionsFrame)
         self.configDB.setObjectName(u"configDB")
-        self.configDB.setGeometry(QRect(40, 590, 151, 61))
-        self.configDB.setStyleSheet(u"color:#fff;\n"
+        self.configDB.setGeometry(QRect(40, 430, 151, 41))
+        self.configDB.setStyleSheet(u"color:rgb(227, 227, 227);\n"
 "font-size: 14px;\n"
 "font-weight: 600;\n"
-"letter-spacing: 2px;")
+"letter-spacing: 2px;\n"
+"border:none;\n"
+"background-color:rgb(61, 49, 55);")
         self.createChargeBtn = QPushButton(self.OptionsFrame)
         self.createChargeBtn.setObjectName(u"createChargeBtn")
-        self.createChargeBtn.setGeometry(QRect(40, 520, 151, 61))
-        self.createChargeBtn.setStyleSheet(u"color:#fff;\n"
+        self.createChargeBtn.setGeometry(QRect(40, 380, 151, 41))
+        self.createChargeBtn.setStyleSheet(u"color:rgb(227, 227, 227);\n"
 "font-size: 14px;\n"
 "font-weight: 600;\n"
-"letter-spacing: 2px;")
+"letter-spacing: 2px;\n"
+"border:none;\n"
+"background-color:rgb(61, 49, 55);")
+        self.docuBtn = QPushButton(self.OptionsFrame)
+        self.docuBtn.setObjectName(u"docuBtn")
+        self.docuBtn.setGeometry(QRect(40, 730, 151, 41))
+        self.docuBtn.setStyleSheet(u"color:rgb(227, 227, 227);\n"
+"font-size: 14px;\n"
+"font-weight: 600;\n"
+"letter-spacing: 2px;\n"
+"border:none;\n"
+"background-color:rgb(61, 49, 55);")
+        self.label_16 = QLabel(self.OptionsFrame)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setGeometry(QRect(34, 35, 171, 181))
+        self.label_16.setPixmap(QPixmap(u"../../img/gym_logo1.png"))
+        self.label_16.setScaledContents(True)
         self.MembersFrame = QFrame(MainWindows2)
         self.MembersFrame.setObjectName(u"MembersFrame")
         self.MembersFrame.setGeometry(QRect(1000, 0, 421, 821))
@@ -54,7 +76,7 @@ class MainWindows2(object):
         self.MembersFrame.setFrameShadow(QFrame.Raised)
         self.selectSocioLabel = QLabel(self.MembersFrame)
         self.selectSocioLabel.setObjectName(u"selectSocioLabel")
-        self.selectSocioLabel.setGeometry(QRect(24, 349, 371, 61))
+        self.selectSocioLabel.setGeometry(QRect(24, 309, 371, 161))
         font = QFont()
         font.setFamily(u"Verdana")
         font.setBold(True)
@@ -77,7 +99,7 @@ class MainWindows2(object):
         self.socioMainNameLabel = QLabel(self.SocioInfoFrame)
         self.socioMainNameLabel.setObjectName(u"socioMainNameLabel")
         self.socioMainNameLabel.setEnabled(False)
-        self.socioMainNameLabel.setGeometry(QRect(0, 30, 411, 61))
+        self.socioMainNameLabel.setGeometry(QRect(20, 30, 391, 61))
         self.socioMainNameLabel.setStyleSheet(u"font-size:25px; \n"
 "color:#3c2934;\n"
 "letter-spacing: 2px;\n"
@@ -142,7 +164,7 @@ class MainWindows2(object):
         self.SocioDiscountInfoLabel.setGeometry(QRect(160, 560, 121, 31))
         self.SocioEmailLabel = QLabel(self.SocioInfoFrame)
         self.SocioEmailLabel.setObjectName(u"SocioEmailLabel")
-        self.SocioEmailLabel.setGeometry(QRect(0, 90, 411, 31))
+        self.SocioEmailLabel.setGeometry(QRect(20, 90, 411, 31))
         self.SocioEmailLabel.setStyleSheet(u"color:#3c2934;\n"
 "letter-spacing: 2px;\n"
 "text-align: center;")
@@ -220,14 +242,14 @@ class MainWindows2(object):
 "}")
         self.ListFrame = QFrame(MainWindows2)
         self.ListFrame.setObjectName(u"ListFrame")
-        self.ListFrame.setGeometry(QRect(240, 110, 761, 711))
+        self.ListFrame.setGeometry(QRect(240, 0, 761, 821))
         self.ListFrame.setStyleSheet(u"background-color:#ffffff;")
         self.ListFrame.setFrameShape(QFrame.StyledPanel)
         self.ListFrame.setFrameShadow(QFrame.Raised)
         self.sociosListTable = QTableWidget(self.ListFrame)
         self.sociosListTable.setObjectName(u"sociosListTable")
         self.sociosListTable.setEnabled(True)
-        self.sociosListTable.setGeometry(QRect(0, 0, 761, 631))
+        self.sociosListTable.setGeometry(QRect(0, 210, 761, 481))
         self.sociosListTable.setStyleSheet(u"#sociosListTable{\n"
 "	border:none;\n"
 "	margin:10px;\n"
@@ -249,13 +271,26 @@ class MainWindows2(object):
         self.sociosListTable.verticalHeader().setVisible(False)
         self.sociosCountLabel = QLabel(self.ListFrame)
         self.sociosCountLabel.setObjectName(u"sociosCountLabel")
-        self.sociosCountLabel.setGeometry(QRect(190, 640, 91, 21))
+        self.sociosCountLabel.setGeometry(QRect(190, 700, 91, 21))
         font1 = QFont()
         font1.setPointSize(10)
         self.sociosCountLabel.setFont(font1)
         self.countSocioLabel = QLabel(self.ListFrame)
         self.countSocioLabel.setObjectName(u"countSocioLabel")
-        self.countSocioLabel.setGeometry(QRect(10, 630, 171, 41))
+        self.countSocioLabel.setGeometry(QRect(10, 690, 171, 41))
+        self.label_15 = QLabel(self.ListFrame)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setGeometry(QRect(90, 70, 651, 101))
+        font2 = QFont()
+        font2.setFamily(u"Sitka Small")
+        font2.setBold(True)
+        font2.setWeight(87)
+        self.label_15.setFont(font2)
+        self.label_15.setStyleSheet(u"font-size:70px; \n"
+"color:rgb(227, 227, 227);\n"
+"letter-spacing: 0px;\n"
+"font-weight: 700;")
+        self.label_15.setFrameShape(QFrame.NoFrame)
         self.newSocioFrame = QFrame(MainWindows2)
         self.newSocioFrame.setObjectName(u"newSocioFrame")
         self.newSocioFrame.setGeometry(QRect(240, 0, 761, 801))
@@ -263,9 +298,9 @@ class MainWindows2(object):
         self.newSocioFrame.setFrameShadow(QFrame.Raised)
         self.planComboBox = QComboBox(self.newSocioFrame)
         self.planComboBox.setObjectName(u"planComboBox")
-        self.planComboBox.setGeometry(QRect(470, 240, 191, 31))
-        font2 = QFont()
-        self.planComboBox.setFont(font2)
+        self.planComboBox.setGeometry(QRect(500, 240, 191, 31))
+        font3 = QFont()
+        self.planComboBox.setFont(font3)
         self.planComboBox.setStyleSheet(u"border:1px solid #3c2934; \n"
 "color:#3c2934;\n"
 "letter-spacing: 2px;\n"
@@ -273,24 +308,23 @@ class MainWindows2(object):
 "")
         self.label_5 = QLabel(self.newSocioFrame)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(120, 60, 501, 51))
-        self.label_5.setStyleSheet(u"font-size:30px; \n"
-"color:#3c2934;\n"
-"letter-spacing: 2px;\n"
-"text-align: center;\n"
-"font-weight: 600;\n"
-"")
-        self.label_5.setFrameShape(QFrame.Box)
+        self.label_5.setGeometry(QRect(90, 70, 651, 101))
+        self.label_5.setFont(font2)
+        self.label_5.setStyleSheet(u"font-size:70px; \n"
+"color:rgb(227, 227, 227);\n"
+"letter-spacing: 0px;\n"
+"font-weight: 700;")
+        self.label_5.setFrameShape(QFrame.NoFrame)
         self.label_6 = QLabel(self.newSocioFrame)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(470, 210, 141, 21))
+        self.label_6.setGeometry(QRect(500, 210, 141, 21))
         self.cancelNewSocioBtn = QPushButton(self.newSocioFrame)
         self.cancelNewSocioBtn.setObjectName(u"cancelNewSocioBtn")
         self.cancelNewSocioBtn.setGeometry(QRect(540, 710, 171, 41))
-        font3 = QFont()
-        font3.setBold(True)
-        font3.setWeight(75)
-        self.cancelNewSocioBtn.setFont(font3)
+        font4 = QFont()
+        font4.setBold(True)
+        font4.setWeight(75)
+        self.cancelNewSocioBtn.setFont(font4)
         self.cancelNewSocioBtn.setStyleSheet(u"#cancelNewSocioBtn{\n"
 "background-color: #F5F5F5;\n"
 "border-radius: 5px;\n"
@@ -308,26 +342,27 @@ class MainWindows2(object):
 "}")
         self.label_7 = QLabel(self.newSocioFrame)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(20, 200, 101, 31))
+        self.label_7.setGeometry(QRect(90, 200, 101, 31))
         self.label_8 = QLabel(self.newSocioFrame)
         self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(20, 380, 71, 31))
+        self.label_8.setGeometry(QRect(90, 380, 71, 31))
         self.newSocioErrorLabel = QLabel(self.newSocioFrame)
         self.newSocioErrorLabel.setObjectName(u"newSocioErrorLabel")
-        self.newSocioErrorLabel.setGeometry(QRect(20, 515, 731, 31))
-        font4 = QFont()
-        font4.setFamily(u"Verdana")
-        font4.setPointSize(10)
-        self.newSocioErrorLabel.setFont(font4)
+        self.newSocioErrorLabel.setGeometry(QRect(90, 515, 661, 31))
+        font5 = QFont()
+        font5.setFamily(u"Verdana")
+        font5.setPointSize(10)
+        self.newSocioErrorLabel.setFont(font5)
         self.newSocioErrorLabel.setLayoutDirection(Qt.LeftToRight)
         self.newSocioErrorLabel.setStyleSheet(u"#newSocioErrorLabel{color: rgb(199, 0, 0);}")
         self.lnameLineEdit = QLineEdit(self.newSocioFrame)
         self.lnameLineEdit.setObjectName(u"lnameLineEdit")
-        self.lnameLineEdit.setGeometry(QRect(20, 330, 351, 31))
+        self.lnameLineEdit.setGeometry(QRect(90, 330, 351, 31))
+        self.lnameLineEdit.setFont(font1)
         self.sendNewSocioBtn = QPushButton(self.newSocioFrame)
         self.sendNewSocioBtn.setObjectName(u"sendNewSocioBtn")
         self.sendNewSocioBtn.setGeometry(QRect(350, 710, 171, 41))
-        self.sendNewSocioBtn.setFont(font3)
+        self.sendNewSocioBtn.setFont(font4)
         self.sendNewSocioBtn.setStyleSheet(u"#sendNewSocioBtn{\n"
 "background-color: #F5F5F5;\n"
 "border-radius: 5px;\n"
@@ -345,51 +380,53 @@ class MainWindows2(object):
 "}")
         self.label_9 = QLabel(self.newSocioFrame)
         self.label_9.setObjectName(u"label_9")
-        self.label_9.setGeometry(QRect(20, 290, 101, 31))
+        self.label_9.setGeometry(QRect(90, 290, 101, 31))
         self.emailLineEdit = QLineEdit(self.newSocioFrame)
         self.emailLineEdit.setObjectName(u"emailLineEdit")
-        self.emailLineEdit.setGeometry(QRect(20, 420, 351, 31))
+        self.emailLineEdit.setGeometry(QRect(90, 420, 351, 31))
+        self.emailLineEdit.setFont(font1)
         self.discountComboBox = QComboBox(self.newSocioFrame)
         self.discountComboBox.setObjectName(u"discountComboBox")
-        self.discountComboBox.setGeometry(QRect(470, 330, 191, 31))
-        self.discountComboBox.setFont(font2)
+        self.discountComboBox.setGeometry(QRect(500, 330, 191, 31))
+        self.discountComboBox.setFont(font3)
         self.discountComboBox.setStyleSheet(u"border:1px solid #3c2934; \n"
 "color:#3c2934;\n"
 "letter-spacing: 2px;\n"
 "font-size: 14px")
         self.label_10 = QLabel(self.newSocioFrame)
         self.label_10.setObjectName(u"label_10")
-        self.label_10.setGeometry(QRect(470, 300, 141, 21))
+        self.label_10.setGeometry(QRect(500, 300, 141, 21))
         self.nameLineEdit = QLineEdit(self.newSocioFrame)
         self.nameLineEdit.setObjectName(u"nameLineEdit")
-        self.nameLineEdit.setGeometry(QRect(20, 240, 351, 31))
+        self.nameLineEdit.setGeometry(QRect(90, 240, 351, 31))
+        self.nameLineEdit.setFont(font1)
         self.newSocioSuccessLabel = QLabel(self.newSocioFrame)
         self.newSocioSuccessLabel.setObjectName(u"newSocioSuccessLabel")
         self.newSocioSuccessLabel.setGeometry(QRect(360, 570, 351, 31))
-        font5 = QFont()
-        font5.setFamily(u"Verdana")
-        font5.setPointSize(11)
-        self.newSocioSuccessLabel.setFont(font5)
+        font6 = QFont()
+        font6.setFamily(u"Verdana")
+        font6.setPointSize(11)
+        self.newSocioSuccessLabel.setFont(font6)
         self.newSocioSuccessLabel.setStyleSheet(u"#newSocioSuccessLabel{\n"
 "	color: rgb(99, 199, 147);\n"
 "}")
         self.nameErrorLabel = QLabel(self.newSocioFrame)
         self.nameErrorLabel.setObjectName(u"nameErrorLabel")
-        self.nameErrorLabel.setGeometry(QRect(200, 220, 171, 20))
+        self.nameErrorLabel.setGeometry(QRect(270, 220, 171, 20))
         self.nameErrorLabel.setLayoutDirection(Qt.RightToLeft)
         self.nameErrorLabel.setStyleSheet(u"color: rgb(199, 0, 0);\n"
 "text-align: right;")
         self.nameErrorLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.lnameErrorLabel = QLabel(self.newSocioFrame)
         self.lnameErrorLabel.setObjectName(u"lnameErrorLabel")
-        self.lnameErrorLabel.setGeometry(QRect(200, 310, 171, 20))
+        self.lnameErrorLabel.setGeometry(QRect(270, 310, 171, 20))
         self.lnameErrorLabel.setLayoutDirection(Qt.RightToLeft)
         self.lnameErrorLabel.setStyleSheet(u"color: rgb(199, 0, 0);\n"
 "text-align: right;")
         self.lnameErrorLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.emailErrorLabel = QLabel(self.newSocioFrame)
         self.emailErrorLabel.setObjectName(u"emailErrorLabel")
-        self.emailErrorLabel.setGeometry(QRect(200, 400, 171, 20))
+        self.emailErrorLabel.setGeometry(QRect(270, 400, 171, 20))
         self.emailErrorLabel.setLayoutDirection(Qt.RightToLeft)
         self.emailErrorLabel.setStyleSheet(u"color: rgb(199, 0, 0);\n"
 "text-align: right;")
@@ -406,7 +443,7 @@ class MainWindows2(object):
         self.cancelUpdateSocioBtn = QPushButton(self.updateSocioFrame)
         self.cancelUpdateSocioBtn.setObjectName(u"cancelUpdateSocioBtn")
         self.cancelUpdateSocioBtn.setGeometry(QRect(540, 710, 171, 41))
-        self.cancelUpdateSocioBtn.setFont(font3)
+        self.cancelUpdateSocioBtn.setFont(font4)
         self.cancelUpdateSocioBtn.setStyleSheet(u"#cancelUpdateSocioBtn{\n"
 "background-color: #F5F5F5;\n"
 "border-radius: 5px;\n"
@@ -425,7 +462,7 @@ class MainWindows2(object):
         self.sendUpdateSocioBtn = QPushButton(self.updateSocioFrame)
         self.sendUpdateSocioBtn.setObjectName(u"sendUpdateSocioBtn")
         self.sendUpdateSocioBtn.setGeometry(QRect(350, 710, 171, 41))
-        self.sendUpdateSocioBtn.setFont(font3)
+        self.sendUpdateSocioBtn.setFont(font4)
         self.sendUpdateSocioBtn.setStyleSheet(u"#sendUpdateSocioBtn{\n"
 "background-color: #F5F5F5;\n"
 "border-radius: 5px;\n"
@@ -447,30 +484,32 @@ class MainWindows2(object):
         self.planUpdateComboBox = QComboBox(self.updateSocioFrame)
         self.planUpdateComboBox.setObjectName(u"planUpdateComboBox")
         self.planUpdateComboBox.setGeometry(QRect(90, 430, 191, 31))
-        self.planUpdateComboBox.setFont(font2)
+        self.planUpdateComboBox.setFont(font3)
         self.planUpdateComboBox.setStyleSheet(u"border:1px solid #3c2934; \n"
 "color:#3c2934;\n"
 "letter-spacing: 2px;\n"
 "font-size: 14px")
         self.label_13 = QLabel(self.updateSocioFrame)
         self.label_13.setObjectName(u"label_13")
-        self.label_13.setGeometry(QRect(110, 60, 541, 51))
-        self.label_13.setStyleSheet(u"font-size:30px; \n"
-"color:#3c2934;\n"
-"letter-spacing: 2px;\n"
-"text-align: center;\n"
-"font-weight: 600;\n"
+        self.label_13.setGeometry(QRect(90, 70, 651, 101))
+        self.label_13.setFont(font2)
+        self.label_13.setStyleSheet(u"font-size:70px; \n"
+"color:rgb(227, 227, 227);\n"
+"letter-spacing: 0px;\n"
+"font-weight: 700;\n"
 "")
-        self.label_13.setFrameShape(QFrame.Box)
+        self.label_13.setFrameShape(QFrame.NoFrame)
         self.nameUpdateLineEdit = QLineEdit(self.updateSocioFrame)
         self.nameUpdateLineEdit.setObjectName(u"nameUpdateLineEdit")
         self.nameUpdateLineEdit.setGeometry(QRect(90, 230, 351, 31))
+        self.nameUpdateLineEdit.setFont(font1)
         self.label_14 = QLabel(self.updateSocioFrame)
         self.label_14.setObjectName(u"label_14")
         self.label_14.setGeometry(QRect(90, 300, 101, 31))
         self.lnameUpdateLineEdit = QLineEdit(self.updateSocioFrame)
         self.lnameUpdateLineEdit.setObjectName(u"lnameUpdateLineEdit")
         self.lnameUpdateLineEdit.setGeometry(QRect(90, 330, 351, 31))
+        self.lnameUpdateLineEdit.setFont(font1)
         self.lnameErrorLabel_2 = QLabel(self.updateSocioFrame)
         self.lnameErrorLabel_2.setObjectName(u"lnameErrorLabel_2")
         self.lnameErrorLabel_2.setGeometry(QRect(270, 310, 171, 20))
@@ -485,11 +524,11 @@ class MainWindows2(object):
         self.nameErrorLabel_2.setStyleSheet(u"color: rgb(199, 0, 0);\n"
 "text-align: right;")
         self.nameErrorLabel_2.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-        self.ListFrame.raise_()
         self.MembersFrame.raise_()
         self.OptionsFrame.raise_()
-        self.newSocioFrame.raise_()
+        self.ListFrame.raise_()
         self.updateSocioFrame.raise_()
+        self.newSocioFrame.raise_()
         QWidget.setTabOrder(self.createChargeBtn, self.sociosListTable)
         QWidget.setTabOrder(self.sociosListTable, self.addSocioBtn)
         QWidget.setTabOrder(self.addSocioBtn, self.nameLineEdit)
@@ -511,9 +550,11 @@ class MainWindows2(object):
 
     def retranslateUi(self, MainWindows2):
         MainWindows2.setWindowTitle(QCoreApplication.translate("MainWindows2", u"Form", None))
-        self.addSocioBtn.setText(QCoreApplication.translate("MainWindows2", u"Agregar Socio", None))
+        self.addSocioBtn.setText(QCoreApplication.translate("MainWindows2", u"Nuevo Socio", None))
         self.configDB.setText(QCoreApplication.translate("MainWindows2", u"Configurar DB", None))
         self.createChargeBtn.setText(QCoreApplication.translate("MainWindows2", u"Crear Cobro", None))
+        self.docuBtn.setText(QCoreApplication.translate("MainWindows2", u"Documentaci\u00f3n", None))
+        self.label_16.setText("")
         self.selectSocioLabel.setText(QCoreApplication.translate("MainWindows2", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -537,13 +578,14 @@ class MainWindows2(object):
         self.activateSocioBtn.setText(QCoreApplication.translate("MainWindows2", u"Activar Socio", None))
         self.sociosCountLabel.setText(QCoreApplication.translate("MainWindows2", u"#", None))
         self.countSocioLabel.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Cantidad de socios: </span></p></body></html>", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">NUEVO SOCIO</span></p></body></html>", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindows2", u"SOCIOS", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindows2", u"+ SOCIO", None))
         self.label_6.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Plan del socio: </span></p></body></html>", None))
         self.cancelNewSocioBtn.setText(QCoreApplication.translate("MainWindows2", u"Cancelar", None))
         self.label_7.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Nombre: </span></p></body></html>", None))
         self.label_8.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Email: </span></p></body></html>", None))
         self.newSocioErrorLabel.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p><br/></p></body></html>", None))
-        self.sendNewSocioBtn.setText(QCoreApplication.translate("MainWindows2", u"Agregar", None))
+        self.sendNewSocioBtn.setText(QCoreApplication.translate("MainWindows2", u"Guardar", None))
         self.label_9.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Apellido: </span></p></body></html>", None))
         self.label_10.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Descuentos: </span></p></body></html>", None))
         self.newSocioSuccessLabel.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p><br/></p></body></html>", None))
@@ -563,7 +605,7 @@ class MainWindows2(object):
         self.cancelUpdateSocioBtn.setText(QCoreApplication.translate("MainWindows2", u"Cancelar", None))
         self.sendUpdateSocioBtn.setText(QCoreApplication.translate("MainWindows2", u"Actualizar", None))
         self.label_12.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Plan del socio: </span></p></body></html>", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">ACTUALIZAR DATOS DEL SOCIO</span></p></body></html>", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindows2", u"ACTUALIZAR", None))
         self.label_14.setText(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Apellido: </span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.lnameErrorLabel_2.setToolTip(QCoreApplication.translate("MainWindows2", u"<html><head/><body><p align=\"right\"><br/></p></body></html>", None))
