@@ -1,0 +1,7 @@
+Instructivo para instalar la app
+
+- crear un entorno virtual
+- activar el entorno
+- correr el comando: pip install -r requirements.txt
+
+ya podemos ejecutar la app
