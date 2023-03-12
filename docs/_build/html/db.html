@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>db package &mdash; documentación de Gimnacio software - UTN trabajo final - 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fonts.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="main module" href="main.html" />
+    <link rel="prev" title="controller package" href="controller.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gimnacio software - UTN trabajo final
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">python-utn-gym-app</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="controller.html">controller package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">db package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db.db">db.db module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db.models">db.models module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db.seed">db.seed module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db.utils">db.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Gimnacio software - UTN trabajo final</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+<div class="git-ribbon">
+  <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+</div>
+
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">python-utn-gym-app</a> &raquo;</li>
+        
+      <li>db package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/db.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="db-package">
+<h1>db package<a class="headerlink" href="#db-package" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="module-db.db">
+<span id="db-db-module"></span><h2>db.db module<a class="headerlink" href="#module-db.db" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Archivo donde tenemos la coneccion a la base de datos y el crud de cada modelo</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="db.db.Connection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.db.</span></span><span class="sig-name descname"><span class="pre">Connection</span></span><a class="reference internal" href="_modules/db/db.html#Connection"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.Connection" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase que se utiliza para conectarse con la base de datos</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.Connection.connection">
+<span class="sig-name descname"><span class="pre">connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#Connection.connection"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.Connection.connection" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>realiza un testeo de la coneccion</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.Connection.create_and_populate_tables">
+<span class="sig-name descname"><span class="pre">create_and_populate_tables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#Connection.create_and_populate_tables"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.Connection.create_and_populate_tables" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>funcion para ingresar datos iniciales de la app</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.db.Connection.db">
+<span class="sig-name descname"><span class="pre">db</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;peewee.SqliteDatabase</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#db.db.Connection.db" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.db.CrudDB">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.db.</span></span><span class="sig-name descname"><span class="pre">CrudDB</span></span><a class="reference internal" href="_modules/db/db.html#CrudDB"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.CrudDB" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#db.db.Connection" title="db.db.Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.db.Connection</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.CrudDB.activate_socio">
+<span class="sig-name descname"><span class="pre">activate_socio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#CrudDB.activate_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.CrudDB.activate_socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>funcion para activar un socio</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.CrudDB.ban_socio">
+<span class="sig-name descname"><span class="pre">ban_socio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#CrudDB.ban_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.CrudDB.ban_socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>funcion para prohibir un socio</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.CrudDB.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#CrudDB.create"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.CrudDB.create" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>funcion para crear un socio data = {name, lname, email, plan, descuento}</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.CrudDB.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#CrudDB.delete"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.CrudDB.delete" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.CrudDB.discount_socio_applications">
+<span class="sig-name descname"><span class="pre">discount_socio_applications</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#CrudDB.discount_socio_applications"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.CrudDB.discount_socio_applications" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>funcion para disminuir las aplicaciones de los descuentos realizar al final del cobro</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.CrudDB.drop_table">
+<span class="sig-name descname"><span class="pre">drop_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#CrudDB.drop_table"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.CrudDB.drop_table" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.CrudDB.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#CrudDB.get_all"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.CrudDB.get_all" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>funcion para listar todos los socios</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.CrudDB.get_one">
+<span class="sig-name descname"><span class="pre">get_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#CrudDB.get_one"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.CrudDB.get_one" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>funcion que nos retorna un socio lo buscamos por el email</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.CrudDB.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#CrudDB.update"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.CrudDB.update" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>funcion para actualizar un socio data = {name, lname, plan}</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.db.DiscountCrud">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.db.</span></span><span class="sig-name descname"><span class="pre">DiscountCrud</span></span><a class="reference internal" href="_modules/db/db.html#DiscountCrud"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.DiscountCrud" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#db.db.Connection" title="db.db.Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.db.Connection</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.DiscountCrud.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#DiscountCrud.get_all"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.DiscountCrud.get_all" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>funcion para listar todos los descuentos</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.DiscountCrud.get_one">
+<span class="sig-name descname"><span class="pre">get_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#DiscountCrud.get_one"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.DiscountCrud.get_one" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.db.PlanesCrud">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.db.</span></span><span class="sig-name descname"><span class="pre">PlanesCrud</span></span><a class="reference internal" href="_modules/db/db.html#PlanesCrud"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.PlanesCrud" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#db.db.Connection" title="db.db.Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.db.Connection</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.PlanesCrud.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#PlanesCrud.get_all"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.PlanesCrud.get_all" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>funcion para listar todos los planes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.db.PlanesCrud.get_one">
+<span class="sig-name descname"><span class="pre">get_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/db.html#PlanesCrud.get_one"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.db.PlanesCrud.get_one" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-db.models">
+<span id="db-models-module"></span><h2>db.models module<a class="headerlink" href="#module-db.models" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Modelos de la app</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Application_left">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.models.</span></span><span class="sig-name descname"><span class="pre">Application_left</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/models.html#Application_left"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.models.Application_left" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#db.models.BaseModel" title="db.models.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.models.BaseModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Application_left.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#db.models.Application_left.DoesNotExist" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">db.models.Application_leftDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Application_left.applications">
+<span class="sig-name descname"><span class="pre">applications</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Application_left.applications&gt;</span></em><a class="headerlink" href="#db.models.Application_left.applications" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Application_left.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;AutoField:</span> <span class="pre">Application_left.id&gt;</span></em><a class="headerlink" href="#db.models.Application_left.id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Application_left.socio_id">
+<span class="sig-name descname"><span class="pre">socio_id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Application_left.socio_id&gt;</span></em><a class="headerlink" href="#db.models.Application_left.socio_id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.BaseModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.models.</span></span><span class="sig-name descname"><span class="pre">BaseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/models.html#BaseModel"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.models.BaseModel" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">peewee.Model</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.BaseModel.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#db.models.BaseModel.DoesNotExist" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">db.models.BaseModelDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.BaseModel.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;AutoField:</span> <span class="pre">BaseModel.id&gt;</span></em><a class="headerlink" href="#db.models.BaseModel.id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Descuentos">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.models.</span></span><span class="sig-name descname"><span class="pre">Descuentos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/models.html#Descuentos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.models.Descuentos" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#db.models.BaseModel" title="db.models.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.models.BaseModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Descuentos.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#db.models.Descuentos.DoesNotExist" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">db.models.DescuentosDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Descuentos.applications">
+<span class="sig-name descname"><span class="pre">applications</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Descuentos.applications&gt;</span></em><a class="headerlink" href="#db.models.Descuentos.applications" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Descuentos.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;AutoField:</span> <span class="pre">Descuentos.id&gt;</span></em><a class="headerlink" href="#db.models.Descuentos.id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Descuentos.percentage">
+<span class="sig-name descname"><span class="pre">percentage</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Descuentos.percentage&gt;</span></em><a class="headerlink" href="#db.models.Descuentos.percentage" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Descuentos.socios">
+<span class="sig-name descname"><span class="pre">socios</span></span><a class="headerlink" href="#db.models.Descuentos.socios" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Planes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.models.</span></span><span class="sig-name descname"><span class="pre">Planes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/models.html#Planes"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.models.Planes" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#db.models.BaseModel" title="db.models.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.models.BaseModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Planes.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#db.models.Planes.DoesNotExist" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">db.models.PlanesDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Planes.data">
+<span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;TextField:</span> <span class="pre">Planes.data&gt;</span></em><a class="headerlink" href="#db.models.Planes.data" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Planes.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;AutoField:</span> <span class="pre">Planes.id&gt;</span></em><a class="headerlink" href="#db.models.Planes.id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Planes.plan_name">
+<span class="sig-name descname"><span class="pre">plan_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Planes.plan_name&gt;</span></em><a class="headerlink" href="#db.models.Planes.plan_name" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Planes.price">
+<span class="sig-name descname"><span class="pre">price</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Planes.price&gt;</span></em><a class="headerlink" href="#db.models.Planes.price" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Planes.socios">
+<span class="sig-name descname"><span class="pre">socios</span></span><a class="headerlink" href="#db.models.Planes.socios" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="db.models.Socio">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.models.</span></span><span class="sig-name descname"><span class="pre">Socio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/models.html#Socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.models.Socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#db.models.BaseModel" title="db.models.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.models.BaseModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#db.models.Socio.DoesNotExist" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">db.models.SocioDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.active">
+<span class="sig-name descname"><span class="pre">active</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Socio.active&gt;</span></em><a class="headerlink" href="#db.models.Socio.active" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.applications_left">
+<span class="sig-name descname"><span class="pre">applications_left</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Socio.applications_left&gt;</span></em><a class="headerlink" href="#db.models.Socio.applications_left" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;DateTimeField:</span> <span class="pre">Socio.created_at&gt;</span></em><a class="headerlink" href="#db.models.Socio.created_at" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.discount_id">
+<span class="sig-name descname"><span class="pre">discount_id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ForeignKeyField:</span> <span class="pre">Socio.discount_id&gt;</span></em><a class="headerlink" href="#db.models.Socio.discount_id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.discount_id_id">
+<span class="sig-name descname"><span class="pre">discount_id_id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ForeignKeyField:</span> <span class="pre">Socio.discount_id&gt;</span></em><a class="headerlink" href="#db.models.Socio.discount_id_id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.email">
+<span class="sig-name descname"><span class="pre">email</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Socio.email&gt;</span></em><a class="headerlink" href="#db.models.Socio.email" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;AutoField:</span> <span class="pre">Socio.id&gt;</span></em><a class="headerlink" href="#db.models.Socio.id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.lname">
+<span class="sig-name descname"><span class="pre">lname</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Socio.lname&gt;</span></em><a class="headerlink" href="#db.models.Socio.lname" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Socio.name&gt;</span></em><a class="headerlink" href="#db.models.Socio.name" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.plan_id">
+<span class="sig-name descname"><span class="pre">plan_id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ForeignKeyField:</span> <span class="pre">Socio.plan_id&gt;</span></em><a class="headerlink" href="#db.models.Socio.plan_id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.models.Socio.plan_id_id">
+<span class="sig-name descname"><span class="pre">plan_id_id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ForeignKeyField:</span> <span class="pre">Socio.plan_id&gt;</span></em><a class="headerlink" href="#db.models.Socio.plan_id_id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.models.get_settings">
+<span class="sig-prename descclassname"><span class="pre">db.models.</span></span><span class="sig-name descname"><span class="pre">get_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/models.html#get_settings"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.models.get_settings" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-db.seed">
+<span id="db-seed-module"></span><h2>db.seed module<a class="headerlink" href="#module-db.seed" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Informacion inicial para app</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="db.seed.populate_tables_dict">
+<span class="sig-prename descclassname"><span class="pre">db.seed.</span></span><span class="sig-name descname"><span class="pre">populate_tables_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/seed.html#populate_tables_dict"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.seed.populate_tables_dict" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-db.utils">
+<span id="db-utils-module"></span><h2>db.utils module<a class="headerlink" href="#module-db.utils" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Funciones y Clases utiles para la app</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="db.utils.RegistroLogError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">db.utils.</span></span><span class="sig-name descname"><span class="pre">RegistroLogError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fecha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proceso</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/utils.html#RegistroLogError"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.utils.RegistroLogError" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Clase para registro de un log de errores</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.utils.RegistroLogError.BASE_DIR">
+<span class="sig-name descname"><span class="pre">BASE_DIR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'C:\\Users\\jchoternasty_the-8ag\\Desktop\\curso\\python-utn-gym-app'</span></em><a class="headerlink" href="#db.utils.RegistroLogError.BASE_DIR" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="db.utils.RegistroLogError.registrar_error">
+<span class="sig-name descname"><span class="pre">registrar_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/utils.html#RegistroLogError.registrar_error"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.utils.RegistroLogError.registrar_error" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="db.utils.RegistroLogError.ruta">
+<span class="sig-name descname"><span class="pre">ruta</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'C:\\Users\\jchoternasty_the-8ag\\Desktop\\curso\\python-utn-gym-app\\errorLog.txt'</span></em><a class="headerlink" href="#db.utils.RegistroLogError.ruta" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.utils.get_data">
+<span class="sig-prename descclassname"><span class="pre">db.utils.</span></span><span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/utils.html#get_data"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.utils.get_data" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Funcion para realizar una peticion a la base de datos</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db.utils.select_all">
+<span class="sig-prename descclassname"><span class="pre">db.utils.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db/utils.html#select_all"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#db.utils.select_all" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Retorna todos los elementos de una tabla en la base de datos</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-db">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-db" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="main.html" class="btn btn-neutral float-right" title="main module" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="controller.html" class="btn btn-neutral float-left" title="controller package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Derechos de autor 2023, Choternasty Juan Pablo.
+
+    </p>
+  </div>
+    
+    
+    
+    Construido con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

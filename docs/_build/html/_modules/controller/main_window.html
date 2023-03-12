@@ -1,0 +1,540 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>controller.main_window &mdash; documentación de Gimnacio software - UTN trabajo final - 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/fonts.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Gimnacio software - UTN trabajo final
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">python-utn-gym-app</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Gimnacio software - UTN trabajo final</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+<div class="git-ribbon">
+  <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+</div>
+
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Código de módulo</a> &raquo;</li>
+        
+      <li>controller.main_window</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Código fuente para controller.main_window</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QTableWidgetItem</span><span class="p">,</span> <span class="n">QAbstractItemView</span>
+<span class="kn">from</span> <span class="nn">views.Ui_mainwindows</span> <span class="kn">import</span> <span class="n">MainWindows2</span>
+<span class="kn">import</span> <span class="nn">re</span>  
+
+<span class="kn">from</span> <span class="nn">.lista_cobros_windows</span> <span class="kn">import</span> <span class="n">ListaCobroWindow</span>
+<span class="kn">from</span> <span class="nn">.new_db_conf</span> <span class="kn">import</span> <span class="n">NewDBConfWindow</span>
+
+<span class="kn">from</span> <span class="nn">db.db</span> <span class="kn">import</span> <span class="n">CrudDB</span><span class="p">,</span> <span class="n">PlanesCrud</span><span class="p">,</span> <span class="n">DiscountCrud</span>
+
+
+<div class="viewcode-block" id="SocioWindow"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow">[documentos]</a><span class="k">class</span> <span class="nc">SocioWindow</span><span class="p">(</span><span class="n">QWidget</span><span class="p">,</span> <span class="n">MainWindows2</span><span class="p">):</span>
+    <span class="n">socio_db</span> <span class="o">=</span> <span class="n">CrudDB</span><span class="p">()</span>
+    <span class="n">plan_db</span> <span class="o">=</span> <span class="n">PlanesCrud</span><span class="p">()</span>
+    <span class="n">discount_db</span> <span class="o">=</span> <span class="n">DiscountCrud</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selectSocioLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Seleccionar un Socio de la lista&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">addSocioBtn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_new_socio</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updateSocioBtn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_update_socio</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deleteSocioBtn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_socio</span><span class="p">)</span>
+        <span class="c1"># self.updateSociosList.clicked.connect(self.populate_table)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">banSocioBtn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deactivate_socio</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activateSocioBtn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">activate_socio</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">createChargeBtn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_lista_cobros</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">configDB</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_db_conf</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table_config</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populate_table</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioInfoFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populate_select_plan</span><span class="p">()</span>
+        <span class="c1"># new socio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">newSocioFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">itemClicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">show_member</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cancelNewSocioBtn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close_new_socio</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populate_select_discount</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sendNewSocioBtn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">add_socio</span><span class="p">)</span>
+        <span class="c1"># update</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updateSocioFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cancelUpdateSocioBtn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close_update</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sendUpdateSocioBtn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_socio</span><span class="p">)</span>
+        
+        
+<div class="viewcode-block" id="SocioWindow.open_lista_cobros"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.open_lista_cobros">[documentos]</a>    <span class="k">def</span> <span class="nf">open_lista_cobros</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="n">ListaCobroWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">clearSelection</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioInfoFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span> </div>
+    
+    
+<div class="viewcode-block" id="SocioWindow.open_db_conf"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.open_db_conf">[documentos]</a>    <span class="k">def</span> <span class="nf">open_db_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="n">NewDBConfWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">clearSelection</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioInfoFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span> </div>
+    
+    
+<div class="viewcode-block" id="SocioWindow.table_config"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.table_config">[documentos]</a>    <span class="k">def</span> <span class="nf">table_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">column_headers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;Nombre&quot;</span><span class="p">,</span> <span class="s2">&quot;Apellido&quot;</span><span class="p">,</span> <span class="s2">&quot;Email&quot;</span><span class="p">]</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">setColumnCount</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">column_headers</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">160</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">160</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">210</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">setHorizontalHeaderLabels</span><span class="p">(</span><span class="n">column_headers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">setSelectionBehavior</span><span class="p">(</span><span class="n">QAbstractItemView</span><span class="o">.</span><span class="n">SelectRows</span><span class="p">)</span></div>
+    
+    
+<div class="viewcode-block" id="SocioWindow.populate_table"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.populate_table">[documentos]</a>    <span class="k">def</span> <span class="nf">populate_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; popula la tabla con los datos de los socios &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socio_db</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">setRowCount</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosCountLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;# </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">index_row</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">index_cell</span><span class="p">,</span> <span class="p">(</span><span class="n">cell_type</span><span class="p">,</span> <span class="n">cell</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">setItem</span><span class="p">(</span><span class="n">index_row</span><span class="p">,</span> <span class="n">index_cell</span><span class="p">,</span> <span class="n">QTableWidgetItem</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cell</span><span class="p">)))</span></div>
+
+    
+<div class="viewcode-block" id="SocioWindow.delete_socio"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.delete_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">delete_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">selected_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">selected_row</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socio_db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">selected_row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Socio </span><span class="si">{</span><span class="n">selected_row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="si">}</span><span class="s2"> eliminado correctamente&quot;</span><span class="p">)</span>
+    
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">clearSelection</span><span class="p">()</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioInfoFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populate_table</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="SocioWindow.deactivate_socio"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.deactivate_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">deactivate_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">selected_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">selected_row</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socio_db</span><span class="o">.</span><span class="n">ban_socio</span><span class="p">(</span><span class="n">selected_row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Socio </span><span class="si">{</span><span class="n">selected_row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="si">}</span><span class="s2"> inhabilitado&quot;</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">clearSelection</span><span class="p">()</span>   
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioInfoFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populate_table</span><span class="p">()</span></div>
+        
+    
+<div class="viewcode-block" id="SocioWindow.activate_socio"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.activate_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">activate_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">selected_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">selected_row</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socio_db</span><span class="o">.</span><span class="n">activate_socio</span><span class="p">(</span><span class="n">selected_row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Socio </span><span class="si">{</span><span class="n">selected_row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="si">}</span><span class="s2"> abilitado&quot;</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">clearSelection</span><span class="p">()</span>   
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioInfoFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populate_table</span><span class="p">()</span></div>
+        
+        
+<div class="viewcode-block" id="SocioWindow.show_member"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.show_member">[documentos]</a>    <span class="k">def</span> <span class="nf">show_member</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">selected_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
+        <span class="n">socio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socio_db</span><span class="o">.</span><span class="n">get_one</span><span class="p">(</span><span class="n">selected_row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+        <span class="n">plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plan_db</span><span class="o">.</span><span class="n">get_one</span><span class="p">(</span><span class="n">socio</span><span class="o">.</span><span class="n">plan_id</span><span class="p">)</span>
+        <span class="n">discount</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discount_db</span><span class="o">.</span><span class="n">get_one</span><span class="p">(</span><span class="n">socio</span><span class="o">.</span><span class="n">discount_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioInfoFrame</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">socio_data_show</span><span class="p">(</span><span class="n">socio</span><span class="p">,</span> <span class="n">plan</span><span class="p">,</span> <span class="n">discount</span><span class="p">)</span></div>
+        
+        
+
+<div class="viewcode-block" id="SocioWindow.socio_data_show"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.socio_data_show">[documentos]</a>    <span class="k">def</span> <span class="nf">socio_data_show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">socio</span><span class="p">,</span> <span class="n">plan</span><span class="p">,</span> <span class="n">discount</span><span class="p">):</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="s2">&quot;Activo&quot;</span> <span class="k">if</span> <span class="n">socio</span><span class="o">.</span><span class="n">active</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;No activo&quot;</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="n">socio</span><span class="o">.</span><span class="n">email</span>
+        <span class="n">full_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">socio</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">socio</span><span class="o">.</span><span class="n">lname</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">socio</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y/%m/</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">plan_info</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">plan_name</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">plan_name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+        <span class="n">discount_applications</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Quedan: </span><span class="si">{</span><span class="n">socio</span><span class="o">.</span><span class="n">applications_left</span><span class="si">}</span><span class="s1"> aplicaciones&#39;</span> <span class="k">if</span> <span class="n">discount</span> <span class="k">else</span> <span class="s1">&#39;No tiene descuentos&#39;</span>
+        <span class="n">discount_percentage</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">discount</span><span class="o">.</span><span class="n">percentage</span><span class="si">}</span><span class="s1">%&#39;</span> <span class="k">if</span> <span class="n">discount</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">socioMainNameLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">full_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioEmailLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioStateLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">socio</span><span class="o">.</span><span class="n">active</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">activateSocioBtn</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">banSocioBtn</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SocioStateLabel</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span>
+                <span class="sa">u</span><span class="s2">&quot;background-color: #F5F5F5;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;border-radius: 5px;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;color: rgb(199, 0, 0);</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;padding: 5px 10px;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;font-size: 14px;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;letter-spacing:5px;&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">activateSocioBtn</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">banSocioBtn</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SocioStateLabel</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span>
+                <span class="sa">u</span><span class="s2">&quot;background-color: #F5F5F5;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;border-radius: 5px;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;color: #392D33;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;padding: 5px 10px;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;font-size: 14px;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;letter-spacing:5px;&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioDateLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioPlanInfoLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">plan_info</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioPlanLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="n">plan_name</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioDiscountLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">discount_applications</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioDiscountInfoLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">discount_percentage</span><span class="p">)</span></div>
+        
+        
+    <span class="c1"># New Socio</span>
+<div class="viewcode-block" id="SocioWindow.open_new_socio"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.open_new_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">open_new_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">newSocioFrame</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">clearSelection</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ListFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioInfoFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selectSocioLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Agregar un nuevo Socio&quot;</span><span class="p">)</span></div>
+    
+    
+<div class="viewcode-block" id="SocioWindow.close_new_socio"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.close_new_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">close_new_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">newSocioFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">newSocioErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">newSocioSuccessLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selectSocioLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Seleccionar un Socio de la lista&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ListFrame</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+        
+        
+<div class="viewcode-block" id="SocioWindow.check_input"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.check_input">[documentos]</a>    <span class="k">def</span> <span class="nf">check_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_type</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">newSocioErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">erase_errors_labels</span><span class="p">()</span>
+        <span class="n">email_regex</span> <span class="o">=</span> <span class="s1">&#39;^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$&#39;</span>
+        <span class="n">letters_regex</span> <span class="o">=</span> <span class="s1">&#39;^[a-zA-Z ]+$&#39;</span>
+        
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nameLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="k">if</span> <span class="n">input_type</span> <span class="o">==</span> <span class="s1">&#39;newSocio&#39;</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">nameUpdateLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="n">lname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lnameLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="k">if</span> <span class="n">input_type</span> <span class="o">==</span> <span class="s1">&#39;newSocio&#39;</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">lnameUpdateLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emailLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        
+        <span class="n">errors_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Este campo es obligatorio&quot;</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">letters_regex</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Solo letras&quot;</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">if</span> <span class="n">lname</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;lname&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Este campo es obligatorio&quot;</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">letters_regex</span><span class="p">,</span> <span class="n">lname</span><span class="p">):</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;lname&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Solo letras&quot;</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>       
+        
+        <span class="k">if</span> <span class="n">input_type</span> <span class="o">==</span> <span class="s1">&#39;newSocio&#39;</span> <span class="ow">and</span> <span class="n">email</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Este campo es obligatorio&quot;</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">input_type</span> <span class="o">==</span> <span class="s1">&#39;newSocio&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">email_regex</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Email invalido&quot;</span>
+            <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">if</span> <span class="n">errors_dict</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">newSocioErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Error al cargar los datos&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write_erros_labels</span><span class="p">(</span><span class="n">errors_dict</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+    
+<div class="viewcode-block" id="SocioWindow.write_erros_labels"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.write_erros_labels">[documentos]</a>    <span class="k">def</span> <span class="nf">write_erros_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nameErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nameErrorLabel_2</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lname&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lnameErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;lname&#39;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lnameErrorLabel_2</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;lname&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emailErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span></div>
+    
+    
+<div class="viewcode-block" id="SocioWindow.erase_errors_labels"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.erase_errors_labels">[documentos]</a>    <span class="k">def</span> <span class="nf">erase_errors_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nameErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nameErrorLabel_2</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lnameErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lnameErrorLabel_2</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emailErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+    
+
+<div class="viewcode-block" id="SocioWindow.add_socio"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.add_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">add_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">newSocioErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">newSocioSuccessLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_input</span><span class="p">(</span><span class="s1">&#39;newSocio&#39;</span><span class="p">):</span>
+            <span class="n">discount</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discountComboBox</span><span class="o">.</span><span class="n">currentText</span><span class="p">()</span>
+            <span class="n">socio</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nameLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="s2">&quot;lname&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">lnameLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> 
+                <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">emailLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> 
+                <span class="s2">&quot;plan&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">planComboBox</span><span class="o">.</span><span class="n">currentText</span><span class="p">(),</span> 
+                <span class="s2">&quot;descuento&quot;</span><span class="p">:</span> <span class="n">discount</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">discount</span> <span class="o">!=</span> <span class="s2">&quot;Sin descuento&quot;</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="p">}</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socio_db</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">socio</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">clear_inputs</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">newSocioSuccessLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">populate_table</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">newSocioErrorLabel</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span></div>
+                
+            
+            
+<div class="viewcode-block" id="SocioWindow.clear_inputs"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.clear_inputs">[documentos]</a>    <span class="k">def</span> <span class="nf">clear_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nameLineEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lnameLineEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emailLineEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">planComboBox</span><span class="o">.</span><span class="n">setCurrentText</span><span class="p">(</span><span class="s1">&#39;basic&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">discountComboBox</span><span class="o">.</span><span class="n">setCurrentText</span><span class="p">(</span><span class="s1">&#39;Sin descuento&#39;</span><span class="p">)</span></div>
+    
+    
+<div class="viewcode-block" id="SocioWindow.populate_select_plan"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.populate_select_plan">[documentos]</a>    <span class="k">def</span> <span class="nf">populate_select_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plan_db</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+        <span class="n">lista</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">plan</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">lista</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plan</span><span class="p">[</span><span class="s2">&quot;plan_name&quot;</span><span class="p">])</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">planComboBox</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">planUpdateComboBox</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span></div>
+        
+        
+<div class="viewcode-block" id="SocioWindow.populate_select_discount"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.populate_select_discount">[documentos]</a>    <span class="k">def</span> <span class="nf">populate_select_discount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">discount_db</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+        <span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sin descuento&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">disc</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">lista</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">disc</span><span class="p">[</span><span class="s2">&quot;percentage&quot;</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39;%&#39;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">discountComboBox</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span></div>
+        
+        
+    <span class="c1"># UPDATE</span>
+<div class="viewcode-block" id="SocioWindow.open_update_socio"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.open_update_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">open_update_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; abre la ventana para actualizar los datos del socio &quot;&quot;&quot;</span> 
+        <span class="n">selected_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="n">selected_row</span><span class="p">:</span>
+            <span class="n">socio_email</span> <span class="o">=</span> <span class="n">selected_row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">updateSocioFrame</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">populate_inputs</span><span class="p">(</span><span class="n">socio_email</span><span class="p">)</span></div>
+            
+
+<div class="viewcode-block" id="SocioWindow.close_update"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.close_update">[documentos]</a>    <span class="k">def</span> <span class="nf">close_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">clearSelection</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populate_table</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SocioInfoFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updateSocioFrame</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span></div>
+    
+    
+<div class="viewcode-block" id="SocioWindow.update_socio"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.update_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">update_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Funcion para actualizar los datos del socio &quot;&quot;&quot;</span>
+        <span class="n">selected_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sociosListTable</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
+        <span class="n">socio_email</span> <span class="o">=</span> <span class="n">selected_row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+            
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_input</span><span class="p">(</span><span class="s1">&#39;updateSocio&#39;</span><span class="p">):</span>
+            <span class="n">socio</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nameUpdateLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="s2">&quot;lname&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">lnameUpdateLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> 
+                <span class="s2">&quot;plan&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">planUpdateComboBox</span><span class="o">.</span><span class="n">currentText</span><span class="p">(),</span>  
+            <span class="p">}</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socio_db</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">socio</span><span class="p">,</span> <span class="n">socio_email</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">close_update</span><span class="p">()</span></div>
+                
+                
+<div class="viewcode-block" id="SocioWindow.populate_inputs"><a class="viewcode-back" href="../../controller.html#controller.main_window.SocioWindow.populate_inputs">[documentos]</a>    <span class="k">def</span> <span class="nf">populate_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">socio_email</span><span class="p">):</span>
+        <span class="n">socio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socio_db</span><span class="o">.</span><span class="n">get_one</span><span class="p">(</span><span class="n">socio_email</span><span class="p">)</span>
+        <span class="n">plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plan_db</span><span class="o">.</span><span class="n">get_one</span><span class="p">(</span><span class="n">socio</span><span class="o">.</span><span class="n">plan_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nameUpdateLineEdit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">socio</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lnameUpdateLineEdit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">socio</span><span class="o">.</span><span class="n">lname</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">planUpdateComboBox</span><span class="o">.</span><span class="n">setCurrentText</span><span class="p">(</span><span class="n">plan</span><span class="o">.</span><span class="n">plan_name</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Derechos de autor 2023, Choternasty Juan Pablo.
+
+    </p>
+  </div>
+    
+    
+    
+    Construido con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

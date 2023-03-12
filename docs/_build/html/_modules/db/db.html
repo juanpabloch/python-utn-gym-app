@@ -1,0 +1,523 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>db.db &mdash; documentación de Gimnacio software - UTN trabajo final - 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/fonts.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Gimnacio software - UTN trabajo final
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">python-utn-gym-app</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Gimnacio software - UTN trabajo final</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+<div class="git-ribbon">
+  <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+</div>
+
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Código de módulo</a> &raquo;</li>
+        
+      <li>db.db</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Código fuente para db.db</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Archivo donde tenemos la coneccion a la base de datos y el crud de cada modelo</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">db.seed</span> <span class="kn">import</span> <span class="n">populate_tables_dict</span>
+<span class="kn">from</span> <span class="nn">db.utils</span> <span class="kn">import</span> <span class="n">get_data</span><span class="p">,</span> <span class="n">select_all</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">db.utils</span> <span class="kn">import</span> <span class="n">RegistroLogError</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">this_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Connection"><a class="viewcode-back" href="../../db.html#db.db.Connection">[documentos]</a><span class="k">class</span> <span class="nc">Connection</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clase que se utiliza para conectarse con la base de datos&quot;&quot;&quot;</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">get_settings</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">planes_data</span> <span class="o">=</span> <span class="n">populate_tables_dict</span><span class="p">()[</span><span class="s2">&quot;planes&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">descuentos_data</span> <span class="o">=</span> <span class="n">populate_tables_dict</span><span class="p">()[</span><span class="s2">&quot;descuentos&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">socios_iniciales</span> <span class="o">=</span> <span class="n">populate_tables_dict</span><span class="p">()[</span><span class="s2">&quot;socios&quot;</span><span class="p">]</span>
+        
+        
+<div class="viewcode-block" id="Connection.connection"><a class="viewcode-back" href="../../db.html#db.db.Connection.connection">[documentos]</a>    <span class="k">def</span> <span class="nf">connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;realiza un testeo de la coneccion&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">db_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">get_settings</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+            <span class="n">db_text</span><span class="o">.</span><span class="n">connection</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DataBase connected successfully!&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Conexión exitosa!&quot;</span><span class="p">}</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Conexión fallida: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+        
+    
+<div class="viewcode-block" id="Connection.create_and_populate_tables"><a class="viewcode-back" href="../../db.html#db.db.Connection.create_and_populate_tables">[documentos]</a>    <span class="k">def</span> <span class="nf">create_and_populate_tables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;funcion para ingresar datos iniciales de la app&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">create_tables</span><span class="p">([</span><span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Descuentos</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Application_left</span><span class="p">])</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">atomic</span><span class="p">():</span>
+                <span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="o">.</span><span class="n">insert_many</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">planes_data</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+                <span class="n">models</span><span class="o">.</span><span class="n">Descuentos</span><span class="o">.</span><span class="n">insert_many</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">descuentos_data</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s1">&#39;Creacion de tablas, inicio App&#39;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">atomic</span><span class="p">():</span>
+                <span class="n">socios_list</span> <span class="o">=</span> <span class="n">select_all</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="p">)</span>
+                <span class="n">initial_data</span> <span class="o">=</span> <span class="n">socios_list</span> <span class="k">if</span> <span class="n">socios_list</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">socios_iniciales</span>
+                <span class="k">for</span> <span class="n">socio</span> <span class="ow">in</span> <span class="n">initial_data</span><span class="p">:</span>
+                    <span class="n">plan</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">socio</span><span class="p">[</span><span class="s1">&#39;plan_id&#39;</span><span class="p">])</span>
+                    <span class="n">descuento</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Descuentos</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Descuentos</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">socio</span><span class="p">[</span><span class="s1">&#39;discount_id&#39;</span><span class="p">])</span>
+                    <span class="n">socio_</span><span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                        <span class="n">name</span><span class="o">=</span> <span class="n">socio</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> 
+                        <span class="n">lname</span><span class="o">=</span> <span class="n">socio</span><span class="p">[</span><span class="s1">&#39;lname&#39;</span><span class="p">],</span> 
+                        <span class="n">email</span><span class="o">=</span> <span class="n">socio</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span> 
+                        <span class="n">plan_id</span><span class="o">=</span><span class="n">plan</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> 
+                        <span class="n">discount_id</span><span class="o">=</span><span class="n">descuento</span><span class="o">.</span><span class="n">id</span> <span class="k">if</span> <span class="n">descuento</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">applications_left</span> <span class="o">=</span> <span class="n">socio</span><span class="p">[</span><span class="s2">&quot;applications_left&quot;</span><span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="n">socio_</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">descuento</span><span class="p">:</span>
+                        <span class="n">models</span><span class="o">.</span><span class="n">Application_left</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">socio_id</span><span class="o">=</span><span class="n">socio_</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">applications</span><span class="o">=</span><span class="n">descuento</span><span class="o">.</span><span class="n">applications</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tables created and initial data inserted&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Creacion de socios, inicio App&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">this_directory</span><span class="p">,</span> <span class="s1">&#39;socios.conf&#39;</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">([],</span> <span class="n">file</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div></div>
+        
+        
+        
+
+    
+<div class="viewcode-block" id="CrudDB"><a class="viewcode-back" href="../../db.html#db.db.CrudDB">[documentos]</a><span class="k">class</span> <span class="nc">CrudDB</span><span class="p">(</span><span class="n">Connection</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+<div class="viewcode-block" id="CrudDB.create"><a class="viewcode-back" href="../../db.html#db.db.CrudDB.create">[documentos]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; funcion para crear un socio data = {name, lname, email, plan, descuento} &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+            <span class="n">plan</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="o">.</span><span class="n">plan_name</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;plan&#39;</span><span class="p">])</span>
+            <span class="n">descuento</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Descuentos</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Descuentos</span><span class="o">.</span><span class="n">percentage</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;descuento&#39;</span><span class="p">])</span>
+            <span class="n">socio_</span><span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> 
+                <span class="n">lname</span><span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;lname&#39;</span><span class="p">],</span> 
+                <span class="n">email</span><span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span> 
+                <span class="n">plan_id</span><span class="o">=</span><span class="n">plan</span><span class="p">,</span> 
+                <span class="n">discount_id</span><span class="o">=</span><span class="n">descuento</span><span class="p">,</span> 
+                <span class="n">applications_left</span><span class="o">=</span><span class="n">descuento</span><span class="o">.</span><span class="n">applications</span>
+            <span class="p">)</span>
+            <span class="n">socio_</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">descuento</span><span class="p">:</span>
+                <span class="n">models</span><span class="o">.</span><span class="n">Application_left</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">socio_id</span><span class="o">=</span><span class="n">socio_</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">applications</span><span class="o">=</span><span class="n">descuento</span><span class="o">.</span><span class="n">applications</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Socio creado con exito!&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Socio creado con exito!&quot;</span><span class="p">}</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Create Socio&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;ERROR create: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="CrudDB.update"><a class="viewcode-back" href="../../db.html#db.db.CrudDB.update">[documentos]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; funcion para actualizar un socio data = {name, lname, plan} &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+            <span class="n">plan</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="o">.</span><span class="n">plan_name</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;plan&#39;</span><span class="p">])</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">lname</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;lname&#39;</span><span class="p">],</span> <span class="n">plan_id</span><span class="o">=</span><span class="n">plan</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Socio actualizado con exito!&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Update Socio&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+        
+        
+<div class="viewcode-block" id="CrudDB.delete"><a class="viewcode-back" href="../../db.html#db.db.CrudDB.delete">[documentos]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Socio eliminado con exito!&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span> 
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Delete Socio&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+    
+    
+<div class="viewcode-block" id="CrudDB.get_all"><a class="viewcode-back" href="../../db.html#db.db.CrudDB.get_all">[documentos]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; funcion para listar todos los socios &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+            <span class="n">socios</span> <span class="o">=</span> <span class="n">select_all</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Get all Socio&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">socios</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">socios</span></div>
+        
+    
+<div class="viewcode-block" id="CrudDB.get_one"><a class="viewcode-back" href="../../db.html#db.db.CrudDB.get_one">[documentos]</a>    <span class="k">def</span> <span class="nf">get_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;funcion que nos retorna un socio lo buscamos por el email&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+            <span class="n">socio</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">email</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Get one Socio&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">socio</span> <span class="o">=</span> <span class="p">{}</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">socio</span></div>
+
+    
+<div class="viewcode-block" id="CrudDB.ban_socio"><a class="viewcode-back" href="../../db.html#db.db.CrudDB.ban_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">ban_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; funcion para prohibir un socio &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="mi">0</span><span class="p">,)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Socio </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s2"> no esta mas activo&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Ban Socio&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+    
+    
+<div class="viewcode-block" id="CrudDB.activate_socio"><a class="viewcode-back" href="../../db.html#db.db.CrudDB.activate_socio">[documentos]</a>    <span class="k">def</span> <span class="nf">activate_socio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; funcion para activar un socio &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Socio </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s2"> activado&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Activate Socio&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+        
+    
+<div class="viewcode-block" id="CrudDB.discount_socio_applications"><a class="viewcode-back" href="../../db.html#db.db.CrudDB.discount_socio_applications">[documentos]</a>    <span class="k">def</span> <span class="nf">discount_socio_applications</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; funcion para disminuir las aplicaciones de los descuentos realizar al final del cobro&quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">socio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_one</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">socio</span><span class="o">.</span><span class="n">applications_left</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">socio</span><span class="o">.</span><span class="n">applications_left</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">socio</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">socio</span><span class="o">.</span><span class="n">discount_id</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">socio</span><span class="o">.</span><span class="n">applications_left</span><span class="o">=</span><span class="mi">0</span>
+                <span class="n">socio</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Discount socio applications Socio&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+    
+    
+    <span class="c1"># def add_or_change_discount(self, email, data):</span>
+    <span class="c1">#     try:</span>
+    <span class="c1">#         self.db.connect()</span>
+    <span class="c1">#         descuento = get_data(models.Descuentos, models.Descuentos.percentage == data[&#39;descuento&#39;])</span>
+    <span class="c1">#         models.Socio.update(discount_id=descuento).where(models.Socio.email == email).execute()</span>
+    <span class="c1">#         if descuento:</span>
+    <span class="c1">#             socio = self.get_one(email)</span>
+    <span class="c1">#             models.Application_left.update(applications=descuento.applications).where(models.Application_left.socio_id == socio.id).execute()</span>
+    <span class="c1">#         print(&quot;Descuento actualizado con exito!&quot;)</span>
+    <span class="c1">#     except Exception as error:</span>
+    <span class="c1">#         print(&quot;ERROR: &quot;, error)</span>
+    <span class="c1">#     finally:</span>
+    <span class="c1">#         self.db.close()</span>
+    
+    
+<div class="viewcode-block" id="CrudDB.drop_table"><a class="viewcode-back" href="../../db.html#db.db.CrudDB.drop_table">[documentos]</a>    <span class="k">def</span> <span class="nf">drop_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">drop_tables</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Socio</span><span class="p">)</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div></div>
+        
+    
+    
+<div class="viewcode-block" id="DiscountCrud"><a class="viewcode-back" href="../../db.html#db.db.DiscountCrud">[documentos]</a><span class="k">class</span> <span class="nc">DiscountCrud</span><span class="p">(</span><span class="n">Connection</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+<div class="viewcode-block" id="DiscountCrud.get_all"><a class="viewcode-back" href="../../db.html#db.db.DiscountCrud.get_all">[documentos]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; funcion para listar todos los descuentos &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">reuse_if_open</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">descuentos</span> <span class="o">=</span> <span class="n">select_all</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Descuentos</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Get all Descuentos&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">descuentos</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">descuentos</span></div>
+    
+    
+<div class="viewcode-block" id="DiscountCrud.get_one"><a class="viewcode-back" href="../../db.html#db.db.DiscountCrud.get_one">[documentos]</a>    <span class="k">def</span> <span class="nf">get_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">reuse_if_open</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">descuento</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Descuentos</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Descuentos</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">id</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Get one Descuentos&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">descuento</span> <span class="o">=</span> <span class="p">{}</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">descuento</span></div></div>
+    
+    
+    
+<div class="viewcode-block" id="PlanesCrud"><a class="viewcode-back" href="../../db.html#db.db.PlanesCrud">[documentos]</a><span class="k">class</span> <span class="nc">PlanesCrud</span><span class="p">(</span><span class="n">Connection</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+<div class="viewcode-block" id="PlanesCrud.get_all"><a class="viewcode-back" href="../../db.html#db.db.PlanesCrud.get_all">[documentos]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; funcion para listar todos los planes &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">reuse_if_open</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">planes</span> <span class="o">=</span> <span class="n">select_all</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Get all Planes&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">planes</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">planes</span></div>
+    
+    
+<div class="viewcode-block" id="PlanesCrud.get_one"><a class="viewcode-back" href="../../db.html#db.db.PlanesCrud.get_one">[documentos]</a>    <span class="k">def</span> <span class="nf">get_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">reuse_if_open</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">plan</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">id</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="s2">&quot;Get one Descuentos&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span>
+            <span class="n">plan</span> <span class="o">=</span> <span class="p">{}</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">plan</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Derechos de autor 2023, Choternasty Juan Pablo.
+
+    </p>
+  </div>
+    
+    
+    
+    Construido con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

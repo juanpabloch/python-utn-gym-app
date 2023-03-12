@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>controller package &mdash; documentación de Gimnacio software - UTN trabajo final - 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fonts.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="db package" href="db.html" />
+    <link rel="prev" title="python-utn-gym-app" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gimnacio software - UTN trabajo final
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">python-utn-gym-app</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">controller package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-controller.lista_cobros_windows">controller.lista_cobros_windows module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-controller.main_window">controller.main_window module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-controller.new_db_conf">controller.new_db_conf module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-controller">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db.html">db package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Gimnacio software - UTN trabajo final</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+<div class="git-ribbon">
+  <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+</div>
+
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">python-utn-gym-app</a> &raquo;</li>
+        
+      <li>controller package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/controller.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="controller-package">
+<h1>controller package<a class="headerlink" href="#controller-package" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="module-controller.lista_cobros_windows">
+<span id="controller-lista-cobros-windows-module"></span><h2>controller.lista_cobros_windows module<a class="headerlink" href="#module-controller.lista_cobros_windows" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controller.lista_cobros_windows.</span></span><span class="sig-name descname"><span class="pre">ListaCobroWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/lista_cobros_windows.html#ListaCobroWindow"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PySide2.QtWidgets.QWidget</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">views.Ui_lista_cobros.ListaCobro</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow.discount_db">
+<span class="sig-name descname"><span class="pre">discount_db</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;db.db.DiscountCrud</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow.discount_db" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow.download">
+<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/lista_cobros_windows.html#ListaCobroWindow.download"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow.download" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow.get_date">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_date</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/lista_cobros_windows.html#ListaCobroWindow.get_date"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow.get_date" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow.get_total">
+<span class="sig-name descname"><span class="pre">get_total</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/lista_cobros_windows.html#ListaCobroWindow.get_total"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow.get_total" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>retorna el cobro a los socios</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow.get_total_charge">
+<span class="sig-name descname"><span class="pre">get_total_charge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/lista_cobros_windows.html#ListaCobroWindow.get_total_charge"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow.get_total_charge" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow.planes_db">
+<span class="sig-name descname"><span class="pre">planes_db</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;db.db.PlanesCrud</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow.planes_db" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow.populate_charge_table">
+<span class="sig-name descname"><span class="pre">populate_charge_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/lista_cobros_windows.html#ListaCobroWindow.populate_charge_table"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow.populate_charge_table" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>popula la tabla con los datos de los socios</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow.socio_db">
+<span class="sig-name descname"><span class="pre">socio_db</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;db.db.CrudDB</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow.socio_db" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow.staticMetaObject">
+<span class="sig-name descname"><span class="pre">staticMetaObject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;PySide2.QtCore.QMetaObject</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow.staticMetaObject" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.lista_cobros_windows.ListaCobroWindow.table_config">
+<span class="sig-name descname"><span class="pre">table_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/lista_cobros_windows.html#ListaCobroWindow.table_config"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.lista_cobros_windows.ListaCobroWindow.table_config" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-controller.main_window">
+<span id="controller-main-window-module"></span><h2>controller.main_window module<a class="headerlink" href="#module-controller.main_window" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controller.main_window.</span></span><span class="sig-name descname"><span class="pre">SocioWindow</span></span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PySide2.QtWidgets.QWidget</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">views.Ui_mainwindows.MainWindows2</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.activate_socio">
+<span class="sig-name descname"><span class="pre">activate_socio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.activate_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.activate_socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.add_socio">
+<span class="sig-name descname"><span class="pre">add_socio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.add_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.add_socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.check_input">
+<span class="sig-name descname"><span class="pre">check_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.check_input"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.check_input" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.clear_inputs">
+<span class="sig-name descname"><span class="pre">clear_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.clear_inputs"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.clear_inputs" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.close_new_socio">
+<span class="sig-name descname"><span class="pre">close_new_socio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.close_new_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.close_new_socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.close_update">
+<span class="sig-name descname"><span class="pre">close_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.close_update"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.close_update" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.deactivate_socio">
+<span class="sig-name descname"><span class="pre">deactivate_socio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.deactivate_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.deactivate_socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.delete_socio">
+<span class="sig-name descname"><span class="pre">delete_socio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.delete_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.delete_socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.discount_db">
+<span class="sig-name descname"><span class="pre">discount_db</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;db.db.DiscountCrud</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#controller.main_window.SocioWindow.discount_db" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.erase_errors_labels">
+<span class="sig-name descname"><span class="pre">erase_errors_labels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.erase_errors_labels"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.erase_errors_labels" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.open_db_conf">
+<span class="sig-name descname"><span class="pre">open_db_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.open_db_conf"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.open_db_conf" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.open_lista_cobros">
+<span class="sig-name descname"><span class="pre">open_lista_cobros</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.open_lista_cobros"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.open_lista_cobros" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.open_new_socio">
+<span class="sig-name descname"><span class="pre">open_new_socio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.open_new_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.open_new_socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.open_update_socio">
+<span class="sig-name descname"><span class="pre">open_update_socio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.open_update_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.open_update_socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>abre la ventana para actualizar los datos del socio</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.plan_db">
+<span class="sig-name descname"><span class="pre">plan_db</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;db.db.PlanesCrud</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#controller.main_window.SocioWindow.plan_db" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.populate_inputs">
+<span class="sig-name descname"><span class="pre">populate_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">socio_email</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.populate_inputs"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.populate_inputs" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.populate_select_discount">
+<span class="sig-name descname"><span class="pre">populate_select_discount</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.populate_select_discount"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.populate_select_discount" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.populate_select_plan">
+<span class="sig-name descname"><span class="pre">populate_select_plan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.populate_select_plan"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.populate_select_plan" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.populate_table">
+<span class="sig-name descname"><span class="pre">populate_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.populate_table"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.populate_table" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>popula la tabla con los datos de los socios</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.show_member">
+<span class="sig-name descname"><span class="pre">show_member</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.show_member"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.show_member" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.socio_data_show">
+<span class="sig-name descname"><span class="pre">socio_data_show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">socio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.socio_data_show"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.socio_data_show" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.socio_db">
+<span class="sig-name descname"><span class="pre">socio_db</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;db.db.CrudDB</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#controller.main_window.SocioWindow.socio_db" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.staticMetaObject">
+<span class="sig-name descname"><span class="pre">staticMetaObject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;PySide2.QtCore.QMetaObject</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#controller.main_window.SocioWindow.staticMetaObject" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.table_config">
+<span class="sig-name descname"><span class="pre">table_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.table_config"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.table_config" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.update_socio">
+<span class="sig-name descname"><span class="pre">update_socio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.update_socio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.update_socio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Funcion para actualizar los datos del socio</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.main_window.SocioWindow.write_erros_labels">
+<span class="sig-name descname"><span class="pre">write_erros_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/main_window.html#SocioWindow.write_erros_labels"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.main_window.SocioWindow.write_erros_labels" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-controller.new_db_conf">
+<span id="controller-new-db-conf-module"></span><h2>controller.new_db_conf module<a class="headerlink" href="#module-controller.new_db_conf" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controller.new_db_conf.</span></span><span class="sig-name descname"><span class="pre">NewDBConfWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PySide2.QtWidgets.QWidget</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">views.Ui_db_config.NewDBConfForm</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.backup_socios">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backup_socios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.backup_socios"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.backup_socios" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.change_settings">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">change_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.change_settings"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.change_settings" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.check_conn">
+<span class="sig-name descname"><span class="pre">check_conn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.check_conn"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.check_conn" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.check_input">
+<span class="sig-name descname"><span class="pre">check_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.check_input"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.check_input" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.clear_inputs">
+<span class="sig-name descname"><span class="pre">clear_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.clear_inputs"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.clear_inputs" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.erase_errors_labels">
+<span class="sig-name descname"><span class="pre">erase_errors_labels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.erase_errors_labels"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.erase_errors_labels" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.hide_fields">
+<span class="sig-name descname"><span class="pre">hide_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.hide_fields"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.hide_fields" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.hide_labels">
+<span class="sig-name descname"><span class="pre">hide_labels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.hide_labels"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.hide_labels" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.new_settings">
+<span class="sig-name descname"><span class="pre">new_settings</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.new_settings" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.populate_db_combobox">
+<span class="sig-name descname"><span class="pre">populate_db_combobox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.populate_db_combobox"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.populate_db_combobox" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.save_data">
+<span class="sig-name descname"><span class="pre">save_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.save_data"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.save_data" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>copia todo lo de la base de datos antigua a la nueva base de datos</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.staticMetaObject">
+<span class="sig-name descname"><span class="pre">staticMetaObject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;PySide2.QtCore.QMetaObject</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.staticMetaObject" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controller.new_db_conf.NewDBConfWindow.write_erros_labels">
+<span class="sig-name descname"><span class="pre">write_erros_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/new_db_conf.html#NewDBConfWindow.write_erros_labels"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.new_db_conf.NewDBConfWindow.write_erros_labels" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-controller">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-controller" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="db.html" class="btn btn-neutral float-right" title="db package" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-left" title="python-utn-gym-app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Derechos de autor 2023, Choternasty Juan Pablo.
+
+    </p>
+  </div>
+    
+    
+    
+    Construido con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
