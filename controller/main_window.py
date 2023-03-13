@@ -87,6 +87,7 @@ class SocioWindow(QWidget, MainWindows2):
 
     
     def delete_socio(self):
+        """elimina un socio"""
         selected_row = self.sociosListTable.selectedItems()
         if selected_row:
             result = self.socio_db.delete(selected_row[3].text())
@@ -99,6 +100,7 @@ class SocioWindow(QWidget, MainWindows2):
 
 
     def deactivate_socio(self):
+        """desactiva un socio"""
         selected_row = self.sociosListTable.selectedItems()
         if selected_row:
             result = self.socio_db.ban_socio(selected_row[3].text())
@@ -110,6 +112,7 @@ class SocioWindow(QWidget, MainWindows2):
         
     
     def activate_socio(self):
+        """activa un socio"""
         selected_row = self.sociosListTable.selectedItems()
         if selected_row:
             result = self.socio_db.activate_socio(selected_row[3].text())
@@ -121,6 +124,7 @@ class SocioWindow(QWidget, MainWindows2):
         
         
     def show_member(self):
+        """nos muestra los datos del socio seleccionado"""
         selected_row = self.sociosListTable.selectedItems()
         socio = self.socio_db.get_one(selected_row[3].text())
         plan = self.plan_db.get_one(socio.plan_id)
@@ -131,6 +135,7 @@ class SocioWindow(QWidget, MainWindows2):
         
 
     def socio_data_show(self, socio, plan, discount):
+        """recopila la informacion del socio"""
         state = "Activo" if socio.active == 1 else "No activo"
         email = socio.email
         full_name = f"{socio.name} {socio.lname}"
@@ -190,6 +195,7 @@ class SocioWindow(QWidget, MainWindows2):
         
         
     def check_input(self, input_type):
+        """realiza las validaciones de los campos"""
         self.newSocioErrorLabel.setText("")
         self.erase_errors_labels()
         email_regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
@@ -252,6 +258,7 @@ class SocioWindow(QWidget, MainWindows2):
     
 
     def add_socio(self):
+        """agregar un socio"""
         self.newSocioErrorLabel.setText("")
         self.newSocioSuccessLabel.setText("")
         if self.check_input('newSocio'):
@@ -335,6 +342,7 @@ class SocioWindow(QWidget, MainWindows2):
                 
                 
     def populate_inputs(self, socio_email):
+        """llena los datos del formulario actualizar"""
         socio = self.socio_db.get_one(socio_email)
         plan = self.plan_db.get_one(socio.plan_id)
         self.nameUpdateLineEdit.setText(socio.name)

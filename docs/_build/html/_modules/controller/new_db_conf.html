@@ -212,6 +212,7 @@
     
         
 <div class="viewcode-block" id="NewDBConfWindow.check_input"><a class="viewcode-back" href="../../controller.html#controller.new_db_conf.NewDBConfWindow.check_input">[documentos]</a>    <span class="k">def</span> <span class="nf">check_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;validacion de formulario&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">erase_errors_labels</span><span class="p">()</span>
         <span class="n">db_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dbComboBox</span><span class="o">.</span><span class="n">currentText</span><span class="p">()</span>
         <span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hostLineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
@@ -284,6 +285,7 @@
     
 <div class="viewcode-block" id="NewDBConfWindow.backup_socios"><a class="viewcode-back" href="../../controller.html#controller.new_db_conf.NewDBConfWindow.backup_socios">[documentos]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">backup_socios</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;realiza un buckup de la lista de socios&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">this_directory</span><span class="p">,</span> <span class="s1">&#39;socios.conf&#39;</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
             <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
           

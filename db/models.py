@@ -9,6 +9,7 @@ from pathlib import Path
 this_directory = os.path.dirname(Path(__file__).parent)
 
 def get_settings(settings=None):
+    """funcion para configurar la base de datos"""
     if not settings:
         with open(os.path.join(this_directory, 'settings.conf')) as file:
                 settings = json.load(file)

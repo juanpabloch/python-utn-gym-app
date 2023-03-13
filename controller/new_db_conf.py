@@ -49,6 +49,7 @@ class NewDBConfWindow(QWidget, NewDBConfForm):
     
         
     def check_input(self):
+        """validacion de formulario"""
         self.erase_errors_labels()
         db_type = self.dbComboBox.currentText()
         host = self.hostLineEdit.text()
@@ -121,6 +122,7 @@ class NewDBConfWindow(QWidget, NewDBConfForm):
     
     @staticmethod
     def backup_socios(data):
+        """realiza un buckup de la lista de socios"""
         with open(os.path.join(this_directory, 'socios.conf'), "w") as file:
             json.dump(data, file, default=str, indent=1)
           

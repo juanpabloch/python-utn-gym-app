@@ -465,6 +465,7 @@
     
     
 <div class="viewcode-block" id="PlanesCrud.get_one"><a class="viewcode-back" href="../../db.html#db.db.PlanesCrud.get_one">[documentos]</a>    <span class="k">def</span> <span class="nf">get_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;funcion que nos retorna un plan por su ID&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">reuse_if_open</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">plan</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Planes</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">id</span><span class="p">)</span>

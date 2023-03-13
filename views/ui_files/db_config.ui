@@ -77,6 +77,9 @@ font-weight: 700;
      <pointsize>10</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0 10px;</string>
+   </property>
   </widget>
   <widget class="QLabel" name="labelDB">
    <property name="geometry">
@@ -105,6 +108,9 @@ font-weight: 700;
      <pointsize>10</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0 10px;</string>
+   </property>
   </widget>
   <widget class="QLabel" name="labelUser">
    <property name="geometry">
@@ -132,6 +138,9 @@ font-weight: 700;
     <font>
      <pointsize>10</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0 10px;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -252,6 +261,9 @@ font-weight: 600;
     <font>
      <pointsize>10</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0 10px;</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelPass">

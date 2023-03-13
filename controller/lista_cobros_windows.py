@@ -23,6 +23,7 @@ class ListaCobroWindow(QWidget, ListaCobro):
         
 
     def table_config(self):
+        """configura la tabla"""
         column_headers = ["NOMBRE", "EMAIL", "COBRAR"]
         self.tableListaCobro.setColumnCount(len(column_headers)) 
         self.tableListaCobro.setColumnWidth(0, 150)   
@@ -62,6 +63,7 @@ class ListaCobroWindow(QWidget, ListaCobro):
 
 
     def get_total_charge(self):
+        """nos trae los datos de los socios y realiza el descuento"""
         socios = self.socio_db.get_all()
         data = []
         total = 0
@@ -81,6 +83,7 @@ class ListaCobroWindow(QWidget, ListaCobro):
     
     
     def download(self):
+        """Descarga un informe de cobro"""
         data = self.get_total_charge()
         data["socios"].append(("", "", ""))
         data["socios"].append(("TOTAL", "", data["total"]))

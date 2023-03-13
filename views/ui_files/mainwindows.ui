@@ -120,25 +120,6 @@ background-color:rgb(61, 49, 55);</string>
      <string>Documentación</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_16">
-    <property name="geometry">
-     <rect>
-      <x>34</x>
-      <y>35</y>
-      <width>171</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../img/gym_logo1.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
   </widget>
   <widget class="QFrame" name="MembersFrame">
    <property name="geometry">
@@ -851,6 +832,9 @@ font-weight: 600;
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">padding:0 10px;</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="sendNewSocioBtn">
     <property name="geometry">
@@ -916,6 +900,9 @@ font-weight: 600;
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">padding:0 10px;</string>
+    </property>
    </widget>
    <widget class="QComboBox" name="discountComboBox">
     <property name="geometry">
@@ -964,6 +951,9 @@ font-size: 14px</string>
      <font>
       <pointsize>10</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">padding:0 10px;</string>
     </property>
    </widget>
    <widget class="QLabel" name="newSocioSuccessLabel">
@@ -1253,6 +1243,9 @@ font-weight: 700;
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">padding:0 10px;</string>
+    </property>
    </widget>
    <widget class="QLabel" name="label_14">
     <property name="geometry">
@@ -1280,6 +1273,9 @@ font-weight: 700;
      <font>
       <pointsize>10</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">padding:0 10px;</string>
     </property>
    </widget>
    <widget class="QLabel" name="lnameErrorLabel_2">
@@ -1338,8 +1334,8 @@ text-align: right;</string>
   <zorder>MembersFrame</zorder>
   <zorder>OptionsFrame</zorder>
   <zorder>ListFrame</zorder>
-  <zorder>updateSocioFrame</zorder>
   <zorder>newSocioFrame</zorder>
+  <zorder>updateSocioFrame</zorder>
  </widget>
  <tabstops>
   <tabstop>createChargeBtn</tabstop>

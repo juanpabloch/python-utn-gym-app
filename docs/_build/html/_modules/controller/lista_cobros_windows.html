@@ -186,7 +186,8 @@
         
 
 <div class="viewcode-block" id="ListaCobroWindow.table_config"><a class="viewcode-back" href="../../controller.html#controller.lista_cobros_windows.ListaCobroWindow.table_config">[documentos]</a>    <span class="k">def</span> <span class="nf">table_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">column_headers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Nombre&quot;</span><span class="p">,</span> <span class="s2">&quot;Email&quot;</span><span class="p">,</span> <span class="s2">&quot;Abonar&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;configura la tabla&quot;&quot;&quot;</span>
+        <span class="n">column_headers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NOMBRE&quot;</span><span class="p">,</span> <span class="s2">&quot;EMAIL&quot;</span><span class="p">,</span> <span class="s2">&quot;COBRAR&quot;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tableListaCobro</span><span class="o">.</span><span class="n">setColumnCount</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">column_headers</span><span class="p">))</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">tableListaCobro</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>   
         <span class="bp">self</span><span class="o">.</span><span class="n">tableListaCobro</span><span class="o">.</span><span class="n">setColumnWidth</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>   
@@ -225,6 +226,7 @@
 
 
 <div class="viewcode-block" id="ListaCobroWindow.get_total_charge"><a class="viewcode-back" href="../../controller.html#controller.lista_cobros_windows.ListaCobroWindow.get_total_charge">[documentos]</a>    <span class="k">def</span> <span class="nf">get_total_charge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;nos trae los datos de los socios y realiza el descuento&quot;&quot;&quot;</span>
         <span class="n">socios</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socio_db</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
@@ -244,6 +246,7 @@
     
     
 <div class="viewcode-block" id="ListaCobroWindow.download"><a class="viewcode-back" href="../../controller.html#controller.lista_cobros_windows.ListaCobroWindow.download">[documentos]</a>    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Descarga un informe de cobro&quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_total_charge</span><span class="p">()</span>
         <span class="n">data</span><span class="p">[</span><span class="s2">&quot;socios&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
         <span class="n">data</span><span class="p">[</span><span class="s2">&quot;socios&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;TOTAL&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]))</span>

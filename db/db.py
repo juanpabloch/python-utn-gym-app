@@ -302,6 +302,7 @@ class PlanesCrud(Connection):
     
     
     def get_one(self, id):
+        """funcion que nos retorna un plan por su ID"""
         try:
             self.db.connect(reuse_if_open=True)
             plan = get_data(models.Planes, models.Planes.id == id)
