@@ -1,3 +1,0 @@
-
-
-2023-03-12 21:03:09.797979 -- info: Creacion de tablas, inicio App -- error: UNIQUE constraint failed: planes.plan_name
